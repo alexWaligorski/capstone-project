@@ -21,6 +21,6 @@ export const data = [
     time: "13:30",
     excluded: "",
     furtherInfo: "Wirt treffen uns an der Strandperle",
-    attending: "Lore",
+    attending: "Juli",
   },
 ];

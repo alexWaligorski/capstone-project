@@ -13,17 +13,20 @@ export default function MeetingDetail({ data }) {
         text={date}
       />
       <ImageWithText image="clock-icon.svg" altText="Uhr Icon" text={time} />
-      <ImageWithText
-        image="stop-icon.svg"
-        altText="Stop Icon"
-        text={excluded}
-      />
+      {excluded ? (
+        <ImageWithText
+          data-testid="excluded"
+          image="stop-icon.svg"
+          altText="Stop Icon"
+          text={excluded}
+        />
+      ) : null}
       <StyledInfobox>
         {furtherInfo ? (
-          <>
+          <div data-testid="info">
             <label htmlFor="weitereInfos">Weitere Infos:</label>
             <StyledParagraph id="weitereInfos">{furtherInfo}</StyledParagraph>
-          </>
+          </div>
         ) : null}
       </StyledInfobox>
       <StyledInfobox>

@@ -1,15 +1,11 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-export default function ImageWithText({ image, altText, text }) {
+export default function ImageWithText({ image, altText, text, ...rest }) {
   return (
     <StyledDiv>
-      {text ? (
-        <>
-          <Image src={image} alt={altText} width={25} height={25} />
-          <StyledPargraph>{text}</StyledPargraph>
-        </>
-      ) : null}
+      <Image src={image} alt={altText} width={25} height={25} {...rest} />
+      <StyledPargraph>{text}</StyledPargraph>
     </StyledDiv>
   );
 }
