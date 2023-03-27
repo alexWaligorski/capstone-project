@@ -1,14 +1,30 @@
+import styled from "styled-components";
+
 export default function MeetingDetail() {
   return (
-    <>
+    <StyledArticle>
       <h2>Volkspark</h2>
-      <p>📅 12.04.23</p>
-      <p>🕒 15:00h</p>
-      <p>🚫 unkastrierte Rüden</p>
+      <StyledParagraph>📅 12.04.23</StyledParagraph>
+      <StyledParagraph>🕒 15:00h</StyledParagraph>
+      <StyledParagraph>🚫 unkastrierte Rüden</StyledParagraph>
       <label htmlFor="infobox">Weitere Infos:</label>
-      <p id="infobox">Nur bei gutem Wetter!</p>
+      <StyledParagraph id="infobox">Nur bei gutem Wetter!</StyledParagraph>
       <label htmlFor="teilnehmende">Wir sind dabei:</label>
-      <p id="teilnehmende">🐶 Fiete</p>
-    </>
+      <StyledParagraph id="teilnehmende">🐶 Fiete</StyledParagraph>
+    </StyledArticle>
   );
 }
+
+const StyledArticle = styled.article`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60vw;
+  margin-left: 20vw;
+  border: 1px solid black;
+  border-radius: 6px;
+`;
+
+const StyledParagraph = styled.p`
+  display: inline-block;
+`;
