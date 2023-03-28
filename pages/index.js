@@ -9,7 +9,6 @@ export default function Home() {
     <StyledMain>
       <Heading>DOG DATES</Heading>
       <MeetingList meetingData={data} />
-      <MeetingDetail data={data[0]} />
     </StyledMain>
   );
 }

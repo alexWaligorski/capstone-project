@@ -1,12 +1,11 @@
 import DogName from "../DogName/DogName";
-import styled from "styled-components";
 
-export default function DogList({ attendingDogs, id }) {
+export default function DogList({ attendingDogs }) {
   return (
     <ul>
-      {attendingDogs.map((attendingDog) => (
+      {attendingDogs.map(({ name, id }) => (
         <li key={id}>
-          <DogName dogName={attendingDog} />
+          <DogName dogName={name} />
         </li>
       ))}
     </ul>
