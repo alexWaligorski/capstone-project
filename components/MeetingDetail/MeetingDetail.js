@@ -5,7 +5,7 @@ import ImageWithText from "../ImageWithText/ImageWithText";
 export default function MeetingDetail({ data }) {
   const { location, date, time, excluded, furtherInfo, attending } = data;
   return (
-    <StyledMain>
+    <StyledArticle>
       <h2>{location}</h2>
       <ImageWithText
         image="calendar-icon.svg"
@@ -21,23 +21,21 @@ export default function MeetingDetail({ data }) {
           text={excluded}
         />
       )}
-      <StyledInfobox>
-        {furtherInfo && (
-          <div data-testid="info">
-            <StyledParagraph>Weitere Infos:</StyledParagraph>
-            <StyledParagraph>{furtherInfo}</StyledParagraph>
-          </div>
-        )}
-      </StyledInfobox>
+      {furtherInfo && (
+        <StyledInfobox data-testid="info">
+          <StyledParagraph>Weitere Infos:</StyledParagraph>
+          <StyledParagraph>{furtherInfo}</StyledParagraph>
+        </StyledInfobox>
+      )}
       <StyledInfobox>
         <StyledParagraph>Wir sind dabei:</StyledParagraph>
         <DogName attendingDog={attending} />
       </StyledInfobox>
-    </StyledMain>
+    </StyledArticle>
   );
 }
 
-const StyledMain = styled.main`
+const StyledArticle = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
