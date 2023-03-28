@@ -20,7 +20,7 @@ export const data = [
     date: "05.06.23",
     time: "13:30",
     excluded: "",
-    furtherInfo: "Wirt treffen uns an der Strandperle",
+    furtherInfo: "Wir treffen uns an der Strandperle",
     attending: "Juli",
   },
 ];
