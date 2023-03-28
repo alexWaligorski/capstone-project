@@ -3,8 +3,7 @@ import ImageWithText from "../ImageWithText/ImageWithText";
 import DogList from "../DogList/DogList";
 
 export default function MeetingDetail({ data }) {
-  const { location, date, time, excluded, furtherInfo, attending, id } =
-    data ?? {};
+  const { location, date, time, excluded, furtherInfo, attending, id } = data;
 
   return (
     <StyledArticle>
