@@ -39,9 +39,8 @@ const StyledArticle = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 60vw;
+  width: 80vw;
   margin-top: 5vw;
-  margin-left: 20vw;
   border: 2px solid black;
   border-radius: 20px;
   padding: 0.8rem;

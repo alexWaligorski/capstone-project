@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import MeetingEntry from "../MeetingEntry/MeetingEntry";
 export default function MeetingList({ meetingData }) {
   return (
     <>
@@ -7,9 +7,7 @@ export default function MeetingList({ meetingData }) {
       <ul>
         {meetingData.map((meeting) => (
           <li key={meeting.id}>
-            {meeting.location}
-            {" / "}
-            {meeting.date} {" / "} {meeting.time} {meeting.attending.length}
+            <MeetingEntry meeting={meeting} />
           </li>
         ))}
       </ul>
