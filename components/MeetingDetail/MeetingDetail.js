@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import DogName from "../DogName/DogName";
 import ImageWithText from "../ImageWithText/ImageWithText";
+import DogList from "../DogList/DogList";
 
 export default function MeetingDetail({ data }) {
-  const { location, date, time, excluded, furtherInfo, attending } = data;
+  const { location, date, time, excluded, furtherInfo, attending, id } = data;
   return (
     <StyledArticle>
       <h2>{location}</h2>
@@ -29,7 +29,7 @@ export default function MeetingDetail({ data }) {
       )}
       <StyledInfobox>
         <StyledParagraph>Wir sind dabei:</StyledParagraph>
-        <DogName attendingDog={attending} />
+        <DogList id={id} attendingDogs={attending} />
       </StyledInfobox>
     </StyledArticle>
   );
