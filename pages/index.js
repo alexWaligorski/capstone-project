@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <main>
       <Heading>DOG DATES</Heading>
-      <MeetingDetail data={data[1]} />
+      <MeetingDetail data={data[0]} />
     </main>
   );
 }
