@@ -8,7 +8,7 @@ export default function MeetingEntry({ meeting }) {
       {" / "}
       <span>{meeting.date}</span> {" / "} <span>{meeting.time}</span> {" / "}{" "}
       <span>{meeting.attending.length}</span>
-      <Image src="dog-icon.svg" alt="dog icon" width={15} height={15} />
+      <StyledDogIcon src="dog-icon.svg" alt="dog icon" width={16} height={16} />
     </StyledEntry>
   );
 }
@@ -24,4 +24,10 @@ const StyledEntry = styled.section`
   width: 80vw;
   text-align: center;
   margin-bottom: 0.5rem;
+`;
+
+const StyledDogIcon = styled(Image)`
+  position: relative;
+  top: 2px;
+  left: 4px;
 `;

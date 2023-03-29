@@ -23,14 +23,14 @@ export default function MeetingDetail({ data }) {
         />
       )}
       {furtherInfo && (
-        <StyledInfobox data-testid="/info">
+        <StyledInfobox data-testid="info">
           <StyledParagraph>Weitere Infos:</StyledParagraph>
           <StyledParagraph>{furtherInfo}</StyledParagraph>
         </StyledInfobox>
       )}
       <StyledInfobox>
         <StyledParagraph>Wir sind dabei:</StyledParagraph>
-        <DogList id={id} attendingDogs={attending ?? []} />
+        <DogList id={id} attendingDogs={attending} />
       </StyledInfobox>
     </StyledArticle>
   );
