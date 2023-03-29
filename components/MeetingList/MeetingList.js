@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import Link from "next/link";
 import MeetingEntry from "../MeetingEntry/MeetingEntry";
-export default function MeetingList({ meetings, onAddMeeting }) {
+import { useMeetingStore } from "../../pages";
+
+export default function MeetingList() {
+  const meetings = useMeetingStore((state) => state.meetings);
+
   return (
     <>
       <h2>Geplante Dates</h2>

@@ -1,14 +1,8 @@
 import styled from "styled-components";
 import Link from "next/link";
-export default function AddMeetingButton({ onAddMeeting }) {
-  console.log(onAddMeeting);
+export default function AddMeetingButton() {
   return (
-    <StyledAddButton
-      href={{
-        pathname: "/meetings/new-meeting",
-        query: onAddMeeting,
-      }}
-    >
+    <StyledAddButton href="/meetings/new-meeting">
       Neues Date anlegen
     </StyledAddButton>
   );

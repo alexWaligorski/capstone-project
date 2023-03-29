@@ -1,6 +1,10 @@
 import styled from "styled-components";
-export default function MeetingForm({ onAddMeeting }) {
-  console.log("add", onAddMeeting);
+import { useMeetingStore } from "../../pages";
+import { useRouter } from "next/router";
+import { uid } from "uid";
+export default function MeetingForm({}) {
+  const router = useRouter();
+  const addMeeting = useMeetingStore((state) => state.addMeeting);
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -9,16 +13,17 @@ export default function MeetingForm({ onAddMeeting }) {
     const excluded = transformExclusionCriteria(data);
 
     const meetingData = {
+      id: uid(),
       location: data.location,
       date: transformedDate,
       time: data.time,
-      attending: data.attending,
+      attending: [data.attending],
       excluded: excluded,
       furtherInfo: data.furtherInfo ? data.furtherInfo : "",
     };
 
-    console.log(meetingData);
-    onAddMeeting(meetingData);
+    addMeeting(meetingData);
+    router.push("/");
   }
 
   function transformDate(date) {

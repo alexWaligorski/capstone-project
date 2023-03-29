@@ -4,14 +4,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { data } from "../../data";
 import { useRouter } from "next/router";
+import { useMeetingStore } from "..";
 
 export default function MeetingPage() {
+  const meetings = useMeetingStore((state) => state.meetings);
   const router = useRouter();
   if (!router.isReady) {
     return <h1>loading</h1>;
   }
   const { id } = router.query;
-  const requestedMeeting = data[id];
+  const requestedMeeting = meetings.find((meeting) => meeting.id === id);
 
   return (
     <>
