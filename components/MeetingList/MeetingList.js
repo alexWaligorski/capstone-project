@@ -5,7 +5,7 @@ export default function MeetingList({ meetingData }) {
   return (
     <>
       <h2>Geplante Dates</h2>
-      {meetingData === [] ? (
+      {meetingData.length !== 0 ? (
         <ul>
           {meetingData.map((meeting) => (
             <StyledListItem key={meeting.id}>
