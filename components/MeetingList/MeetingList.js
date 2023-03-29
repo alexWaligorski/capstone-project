@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import Link from "next/link";
 import MeetingEntry from "../MeetingEntry/MeetingEntry";
-export default function MeetingList({ meetingData }) {
+export default function MeetingList({ meetings, onAddMeeting }) {
   return (
     <>
       <h2>Geplante Dates</h2>
-      {meetingData.length !== 0 ? (
+      {meetings.length !== 0 ? (
         <ul>
-          {meetingData.map((meeting) => (
+          {meetings.map((meeting) => (
             <StyledListItem key={meeting.id}>
               <StyledEntry href={`/meetings/${meeting.id}`}>
                 <MeetingEntry meeting={meeting} />
