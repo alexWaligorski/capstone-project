@@ -21,7 +21,7 @@ const StyledEntry = styled.section`
   border: 2px solid black;
   border-radius: 8px;
   padding: 1rem 0;
-  width: 80vw;
+  width: 90vw;
   text-align: center;
   margin-bottom: 0.5rem;
 `;
