@@ -1,4 +1,7 @@
-export const data = [
+import { render, screen } from "@testing-library/react";
+import MeetingList from "./MeetingList";
+
+const data = [
   {
     id: "0",
     location: "Volkspark",
@@ -35,3 +38,14 @@ export const data = [
     attending: [{ id: "A", name: "Fiete" }],
   },
 ];
+
+test("renders a list", () => {
+  render(<MeetingList meetingData={data} />);
+  const list = screen.getByRole("list");
+  expect(list).toBeInTheDocument();
+});
+
+test("renders a list", () => {
+  const { getAllByRole } = render(<MeetingList meetingData={data} />);
+  expect(getAllByRole("listitem")).toHaveLength(3);
+});

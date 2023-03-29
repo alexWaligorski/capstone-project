@@ -7,7 +7,7 @@ const allInfo = {
   time: "15:00",
   excluded: "unkastrierte Rüden",
   furtherInfo: "Nur bei gutem Wetter!",
-  attending: "Fiete",
+  attending: [{ id: "A", name: "Fiete" }],
 };
 
 const noOptionalInfo = {
@@ -16,7 +16,7 @@ const noOptionalInfo = {
   time: "15:00",
   excluded: "",
   furtherInfo: "",
-  attending: "Fiete",
+  attending: [{ id: "A", name: "Fiete" }],
 };
 
 test("renders given location from test data", () => {

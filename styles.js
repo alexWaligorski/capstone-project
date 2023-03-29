@@ -16,4 +16,14 @@ export default createGlobalStyle`
   p {
     margin: 0;
   }
+
+  li {
+  list-style: none;
+}
+
+ul {
+margin: 0;
+padding: 0;
+}
+
 `;
