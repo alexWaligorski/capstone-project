@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Heading from "../components/Heading";
 import MeetingList from "../components/MeetingList/MeetingList";
 import AddMeetingButton from "../components/AddMeetingButton/AddMeetingButton";
-/* import { data } from "../data"; */
 import { create } from "zustand";
 
 export const useMeetingStore = create((set) => ({
@@ -12,7 +11,7 @@ export const useMeetingStore = create((set) => ({
       location: "Volkspark",
       date: "12.04.23",
       time: "15:00",
-      excluded: "unkastrierte Rüden",
+      excluded: "Unkastrierte Rüden, Welpen, läufige Hündinnen",
       furtherInfo: "Nur bei gutem Wetter!",
       attending: [
         { id: "A", name: "Fiete" },

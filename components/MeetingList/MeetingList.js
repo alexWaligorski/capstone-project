@@ -28,12 +28,14 @@ export default function MeetingList() {
 
 const StyledEntry = styled(Link)`
   text-decoration: none;
+  color: #000000;
   &:visited {
     color: #000000;
   }
 `;
 
 const StyledListItem = styled.li`
+  background-color: #ffffff;
   &:hover {
     background-color: #fcebcc;
   }
