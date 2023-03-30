@@ -7,7 +7,7 @@ jest.mock("next/router", () => ({
   useRouter: jest.fn(),
 }));
 
-test("submits the form with user input", async () => {
+test("checks if submit handler is called on form submit", async () => {
   useRouter.mockImplementation(() => ({
     push: jest.fn(),
   }));
