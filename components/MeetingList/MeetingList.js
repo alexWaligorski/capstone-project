@@ -1,13 +1,17 @@
 import styled from "styled-components";
 import Link from "next/link";
 import MeetingEntry from "../MeetingEntry/MeetingEntry";
-export default function MeetingList({ meetingData }) {
+import { useMeetingStore } from "../../pages";
+
+export default function MeetingList() {
+  const meetings = useMeetingStore((state) => state.meetings);
+
   return (
     <>
       <h2>Geplante Dates</h2>
-      {meetingData.length !== 0 ? (
+      {meetings.length !== 0 ? (
         <ul>
-          {meetingData.map((meeting) => (
+          {meetings.map((meeting) => (
             <StyledListItem key={meeting.id}>
               <StyledEntry href={`/meetings/${meeting.id}`}>
                 <MeetingEntry meeting={meeting} />
@@ -24,12 +28,14 @@ export default function MeetingList({ meetingData }) {
 
 const StyledEntry = styled(Link)`
   text-decoration: none;
+  color: #000000;
   &:visited {
     color: #000000;
   }
 `;
 
 const StyledListItem = styled.li`
+  background-color: #ffffff;
   &:hover {
     background-color: #fcebcc;
   }

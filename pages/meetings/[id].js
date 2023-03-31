@@ -2,16 +2,17 @@ import styled from "styled-components";
 import MeetingDetail from "../../components/MeetingDetail/MeetingDetail";
 import Link from "next/link";
 import Image from "next/image";
-import { data } from "../../data";
 import { useRouter } from "next/router";
+import { useMeetingStore } from "..";
 
 export default function MeetingPage() {
+  const meetings = useMeetingStore((state) => state.meetings);
   const router = useRouter();
   if (!router.isReady) {
     return <h1>loading</h1>;
   }
   const { id } = router.query;
-  const requestedMeeting = data[id];
+  const requestedMeeting = meetings.find((meeting) => meeting.id === id);
 
   return (
     <>
@@ -31,7 +32,14 @@ export default function MeetingPage() {
 
 const StyledLink = styled(Link)`
   display: inline-block;
-  margin: 2rem 0 0 15vw;
+  line-height: 1rem;
+  width: auto;
+  padding: 1rem;
+  text-align: center;
+  margin: 2rem 0 0 5vw;
+  color: #000000;
+  background-color: #f7d702;
+  border-radius: 10px;
 `;
 
 const StyledIcon = styled(Image)`
