@@ -1,4 +1,4 @@
-import Heading from ".";
+import Heading from "./Header";
 import { render, screen } from "@testing-library/react";
 
 test("test", () => {

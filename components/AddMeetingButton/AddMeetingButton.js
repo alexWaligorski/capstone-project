@@ -10,8 +10,8 @@ export default function AddMeetingButton() {
 
 const StyledAddButton = styled(Link)`
   text-decoration: none;
-  color: #000000;
-  background-color: #f7d702;
+  color: var(--black);
+  background-color: var(--yellow);
   vertical-align: middle;
   line-height: 2rem;
   width: auto;

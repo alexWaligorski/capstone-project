@@ -2,6 +2,7 @@ import styled from "styled-components";
 import MeetingDetail from "../../components/MeetingDetail/MeetingDetail";
 import Link from "next/link";
 import Image from "next/image";
+import Header from "../../components/Header/Header";
 import { useRouter } from "next/router";
 import { useMeetingStore } from "..";
 
@@ -16,6 +17,7 @@ export default function MeetingPage() {
 
   return (
     <>
+      <Header />
       <MeetingDetail data={requestedMeeting} />
       <StyledLink href="/">
         <StyledIcon
@@ -38,7 +40,7 @@ const StyledLink = styled(Link)`
   text-align: center;
   margin: 2rem 0 0 5vw;
   color: #000000;
-  background-color: #f7d702;
+  background-color: var(--yellow);
   border-radius: 10px;
 `;
 

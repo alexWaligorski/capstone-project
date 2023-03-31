@@ -47,7 +47,7 @@ const StyledArticle = styled.article`
   border-radius: 20px;
   padding: 0.8rem;
   text-align: start;
-  background-color: #ffffff;
+  background-color: var(--white);
 `;
 
 const StyledInfobox = styled.div`

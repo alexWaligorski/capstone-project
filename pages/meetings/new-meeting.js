@@ -1,4 +1,5 @@
 import NewMeetingForm from "../../components/NewMeetingForm/NewMeetingForm";
+import Header from "../../components/Header/Header";
 import { useMeetingStore } from "../../pages";
 import { useRouter } from "next/router";
 import { uid } from "uid";
@@ -80,5 +81,10 @@ export default function NewMeetingPage({ onSubmit }) {
     return excluded;
   }
 
-  return <NewMeetingForm onSubmit={handleSubmit} />;
+  return (
+    <>
+      <Header />
+      <NewMeetingForm onSubmit={handleSubmit} />{" "}
+    </>
+  );
 }

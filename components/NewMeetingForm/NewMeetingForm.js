@@ -30,7 +30,9 @@ export default function NewMeetingForm({ onSubmit }) {
             id="unkastrierterueden"
             data-testid="unkastrierterueden"
           />
-          <label htmlFor="unkastrierterueden">unkastrierte Rüden</label>
+          <StyledCheckboxLabel htmlFor="unkastrierterueden">
+            unkastrierte Rüden
+          </StyledCheckboxLabel>
         </span>
         <span>
           <input
@@ -39,7 +41,9 @@ export default function NewMeetingForm({ onSubmit }) {
             id="kastrierterueden"
             data-testid="kastrierterueden"
           />
-          <label htmlFor="kastrierterueden">kastrierte Rüden</label>
+          <StyledCheckboxLabel htmlFor="kastrierterueden">
+            kastrierte Rüden
+          </StyledCheckboxLabel>
         </span>
         <span>
           <input
@@ -48,7 +52,9 @@ export default function NewMeetingForm({ onSubmit }) {
             id="unkastriertehuendinnen"
             data-testid="unkastriertehuendinnen"
           />
-          <label htmlFor="unkastriertehuendinnen">unkastrierte Hündinnen</label>
+          <StyledCheckboxLabel htmlFor="unkastriertehuendinnen">
+            unkastrierte Hündinnen
+          </StyledCheckboxLabel>
         </span>
         <span>
           <input
@@ -57,7 +63,9 @@ export default function NewMeetingForm({ onSubmit }) {
             id="kastriertehuendinnen"
             data-testid="kastriertehuendinnen"
           />
-          <label htmlFor="kastriertehuendinnen">kastrierte Hündinnen</label>
+          <StyledCheckboxLabel htmlFor="kastriertehuendinnen">
+            kastrierte Hündinnen
+          </StyledCheckboxLabel>
         </span>
         <span>
           <input
@@ -66,7 +74,9 @@ export default function NewMeetingForm({ onSubmit }) {
             id="laeufigehuendinnen"
             data-testid="laeufigehuendinnen"
           />
-          <label htmlFor="laeufigehuendinnen">läufige Hündinnen</label>
+          <StyledCheckboxLabel htmlFor="laeufigehuendinnen">
+            läufige Hündinnen
+          </StyledCheckboxLabel>
         </span>
         <span>
           <input
@@ -75,7 +85,7 @@ export default function NewMeetingForm({ onSubmit }) {
             id="welpen"
             data-testid="welpen"
           />
-          <label htmlFor="welpen">Welpen</label>
+          <StyledCheckboxLabel htmlFor="welpen">Welpen</StyledCheckboxLabel>
         </span>
       </StyledFieldset>
       <label htmlFor="furtherInfo">Weitere Infos zum Date:</label>
@@ -93,8 +103,10 @@ const StyledForm = styled.form`
   justify-content: center;
   width: 90vw;
   margin-left: 5vw;
+  margin-top: 11vh;
   gap: 0.5rem;
   padding-bottom: 2rem;
+  color: var(--white);
 `;
 
 const StyledFieldset = styled.fieldset`
@@ -103,4 +115,8 @@ const StyledFieldset = styled.fieldset`
   margin: 0.7rem 0;
   gap: 0.25rem;
   border-radius: 8px;
+`;
+
+const StyledCheckboxLabel = styled.label`
+  margin-left: 0.8rem;
 `;

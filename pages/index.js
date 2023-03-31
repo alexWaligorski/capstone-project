@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Heading from "../components/Heading";
+import Header from "../components/Header/Header";
 import MeetingList from "../components/MeetingList/MeetingList";
 import AddMeetingButton from "../components/AddMeetingButton/AddMeetingButton";
 import { create } from "zustand";
@@ -29,7 +29,7 @@ export const useMeetingStore = create((set) => ({
 export default function Home() {
   return (
     <StyledMain>
-      <Heading>DOG DATES</Heading>
+      <Header />
       <AddMeetingButton />
       <MeetingList />
     </StyledMain>
@@ -40,4 +40,5 @@ const StyledMain = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 10vh;
 `;

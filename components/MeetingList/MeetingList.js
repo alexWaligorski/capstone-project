@@ -28,15 +28,15 @@ export default function MeetingList() {
 
 const StyledEntry = styled(Link)`
   text-decoration: none;
-  color: #000000;
+  color: var(--black);
   &:visited {
-    color: #000000;
+    color: var(--black);
   }
 `;
 
 const StyledListItem = styled.li`
-  background-color: #ffffff;
+  background-color: var(--white);
   &:hover {
-    background-color: #fcebcc;
+    background-color: var(--yellow);
   }
 `;

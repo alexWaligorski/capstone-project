@@ -42,7 +42,7 @@ const StyledDogIcon = styled(Image)`
 `;
 
 const StyledEntryHeading = styled.h3`
-  color: #f85220;
+  color: var(--orange);
   font-weight: bold;
   margin: 0 0 0.5rem; ;
 `;

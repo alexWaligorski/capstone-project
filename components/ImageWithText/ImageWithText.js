@@ -12,7 +12,7 @@ export default function ImageWithText({ image, altText, text, ...rest }) {
 
 const StyledPargraph = styled.p`
   display: inline-block;
-  width: 50%;
+  width: 70%;
   margin: 0;
   text-align: right;
 `;
