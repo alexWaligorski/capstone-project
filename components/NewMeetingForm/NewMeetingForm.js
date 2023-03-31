@@ -14,7 +14,13 @@ export default function NewMeetingForm({ onSubmit }) {
         können.{" "}
       </p>
       <label htmlFor="location">Ort:</label>
-      <input type="text" name="location" id="location" required />
+      <input
+        type="text"
+        name="location"
+        id="location"
+        maxlength="50"
+        required
+      />
       <label htmlFor="date">Datum:</label>
       <input type="date" name="date" id="date" required />
       <label htmlFor="time">Uhrzeit:</label>
@@ -89,7 +95,12 @@ export default function NewMeetingForm({ onSubmit }) {
         </span>
       </StyledFieldset>
       <label htmlFor="furtherInfo">Weitere Infos zum Date:</label>
-      <input type="text-area" name="furtherInfo" id="furtherInfo" />
+      <input
+        type="text-area"
+        name="furtherInfo"
+        id="furtherInfo"
+        maxlength="300"
+      />
       <button aria-label="Neues Date speichern" type="submit">
         Speichern
       </button>
