@@ -78,8 +78,8 @@ export default function NewMeetingForm({ onSubmit }) {
           <label htmlFor="welpen">Welpen</label>
         </span>
       </StyledFieldset>
-      <label htmlFor="info">Weitere Infos zum Date:</label>
-      <input type="text-area" name="info" id="info" />
+      <label htmlFor="furtherInfo">Weitere Infos zum Date:</label>
+      <input type="text-area" name="furtherInfo" id="furtherInfo" />
       <button aria-label="Neues Date speichern" type="submit">
         Speichern
       </button>
