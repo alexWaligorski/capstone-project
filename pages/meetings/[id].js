@@ -38,10 +38,11 @@ const StyledLink = styled(Link)`
   width: auto;
   padding: 1rem;
   text-align: center;
-  margin: 2rem 0 0 5vw;
+  margin: 2rem 0 3vh 5vw;
   color: #000000;
   background-color: var(--yellow);
   border-radius: 10px;
+  text-decoration: none;
 `;
 
 const StyledIcon = styled(Image)`

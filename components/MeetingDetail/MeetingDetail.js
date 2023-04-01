@@ -41,7 +41,7 @@ const StyledArticle = styled.article`
   flex-direction: column;
   align-items: center;
   width: 90vw;
-  margin-top: 5vw;
+  margin-top: 12vh;
   margin-left: 5vw;
   border: 2px solid black;
   border-radius: 20px;

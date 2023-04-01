@@ -8,7 +8,7 @@ export default function MeetingList() {
 
   return (
     <>
-      <h2>Geplante Dates</h2>
+      <StyledHeading>Geplante Dates</StyledHeading>
       {meetings.length !== 0 ? (
         <ul>
           {meetings.map((meeting) => (
@@ -35,8 +35,14 @@ const StyledEntry = styled(Link)`
 `;
 
 const StyledListItem = styled.li`
+  border: 2px solid black;
+  border-radius: 8px;
   background-color: var(--white);
   &:hover {
-    background-color: var(--yellow);
+    background-color: var(--yellow-hover);
   }
+`;
+
+const StyledHeading = styled.h2`
+  color: var(--white);
 `;

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ButtonWithIcon from "../ButtonWithIcon/ButtonWithIcon";
 export default function NewMeetingForm({ onSubmit }) {
   return (
     <StyledForm
@@ -18,7 +19,7 @@ export default function NewMeetingForm({ onSubmit }) {
         type="text"
         name="location"
         id="location"
-        maxlength="50"
+        maxLength="50"
         required
       />
       <label htmlFor="date">Datum:</label>
@@ -96,14 +97,18 @@ export default function NewMeetingForm({ onSubmit }) {
       </StyledFieldset>
       <label htmlFor="furtherInfo">Weitere Infos zum Date:</label>
       <input
-        type="text-area"
+        type="textarea"
         name="furtherInfo"
         id="furtherInfo"
-        maxlength="300"
+        maxLength="300"
       />
-      <button aria-label="Neues Date speichern" type="submit">
-        Speichern
-      </button>
+      <ButtonWithIcon
+        aria="Neues Date speichern"
+        type="submit"
+        text="speichern"
+        alt="speichern Icon"
+        source="/check-icon-round.svg"
+      />
     </StyledForm>
   );
 }
