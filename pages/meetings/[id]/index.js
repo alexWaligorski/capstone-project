@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import MeetingDetail from "../../components/MeetingDetail/MeetingDetail";
+import MeetingDetail from "../../../components/MeetingDetail/MeetingDetail";
 import Link from "next/link";
 import Image from "next/image";
-import Header from "../../components/Header/Header";
+import Header from "../../../components/Header/Header";
 import { useRouter } from "next/router";
-import { useMeetingStore } from "..";
+import { useMeetingStore } from "../..";
 
 export default function MeetingPage() {
   const meetings = useMeetingStore((state) => state.meetings);

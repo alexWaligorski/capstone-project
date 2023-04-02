@@ -1,33 +1,53 @@
 import styled from "styled-components";
 import ButtonWithIcon from "../ButtonWithIcon/ButtonWithIcon";
-export default function NewMeetingForm({ onSubmit }) {
+export default function NewMeetingForm({
+  onSubmit,
+  formTitle,
+  defaultData,
+  description,
+}) {
   return (
     <StyledForm
       onSubmit={onSubmit}
-      aria-labelledby="headline"
+      aria-labelledby={formTitle}
       aria-describedby="description"
       data-testid="form"
     >
-      <h2 name="headline">Plan ein DogDate!</h2>
-      <p name="description">
-        Lass deinen Hund mit anderen Fellnasen toben und lerne dabei selbst neue
-        Menschen kennen. Leg ein neues DogDate an, damit andere daran teilnehmen
-        können.{" "}
-      </p>
+      <h2 name="formTitle">{formTitle}</h2>
+      <p name="description"> {description} </p>
       <label htmlFor="location">Ort:</label>
       <input
         type="text"
         name="location"
         id="location"
         maxLength="50"
+        defaultValue={defaultData?.location}
         required
       />
       <label htmlFor="date">Datum:</label>
-      <input type="date" name="date" id="date" required />
+      <input
+        type="date"
+        name="date"
+        id="date"
+        defaultValue={defaultData?.date}
+        required
+      />
       <label htmlFor="time">Uhrzeit:</label>
-      <input type="time" name="time" id="time" required />
+      <input
+        type="time"
+        name="time"
+        id="time"
+        defaultValue={defaultData?.time}
+        required
+      />
       <label htmlFor="attending">Teilnehmende:</label>
-      <input type="text" name="attending" id="attending" required />
+      <input
+        type="text"
+        name="attending"
+        id="attending"
+        defaultValue={defaultData?.attending}
+        required
+      />
       <StyledFieldset>
         <legend>Leider dürfen folgende Hunde nicht teilnehmen:</legend>
         <span>
@@ -36,6 +56,7 @@ export default function NewMeetingForm({ onSubmit }) {
             name="unkastrierterueden"
             id="unkastrierterueden"
             data-testid="unkastrierterueden"
+            checked={defaultData?.unkastrierterueden}
           />
           <StyledCheckboxLabel htmlFor="unkastrierterueden">
             unkastrierte Rüden
@@ -47,6 +68,7 @@ export default function NewMeetingForm({ onSubmit }) {
             name="kastrierterueden"
             id="kastrierterueden"
             data-testid="kastrierterueden"
+            checked={defaultData?.kastrierterueden}
           />
           <StyledCheckboxLabel htmlFor="kastrierterueden">
             kastrierte Rüden
@@ -58,6 +80,7 @@ export default function NewMeetingForm({ onSubmit }) {
             name="unkastriertehuendinnen"
             id="unkastriertehuendinnen"
             data-testid="unkastriertehuendinnen"
+            checked={defaultData?.unkastriertehuendinnen}
           />
           <StyledCheckboxLabel htmlFor="unkastriertehuendinnen">
             unkastrierte Hündinnen
@@ -69,6 +92,7 @@ export default function NewMeetingForm({ onSubmit }) {
             name="kastriertehuendinnen"
             id="kastriertehuendinnen"
             data-testid="kastriertehuendinnen"
+            checked={defaultData?.kastriertehuendinnen}
           />
           <StyledCheckboxLabel htmlFor="kastriertehuendinnen">
             kastrierte Hündinnen
@@ -80,6 +104,7 @@ export default function NewMeetingForm({ onSubmit }) {
             name="laeufigehuendinnen"
             id="laeufigehuendinnen"
             data-testid="laeufigehuendinnen"
+            checked={defaultData?.laeufigehuendinnen}
           />
           <StyledCheckboxLabel htmlFor="laeufigehuendinnen">
             läufige Hündinnen
@@ -91,6 +116,7 @@ export default function NewMeetingForm({ onSubmit }) {
             name="welpen"
             id="welpen"
             data-testid="welpen"
+            checked={defaultData?.welpen}
           />
           <StyledCheckboxLabel htmlFor="welpen">Welpen</StyledCheckboxLabel>
         </span>
@@ -101,13 +127,14 @@ export default function NewMeetingForm({ onSubmit }) {
         name="furtherInfo"
         id="furtherInfo"
         maxLength="300"
+        defaultValue={defaultData?.furtherInfo}
       />
       <ButtonWithIcon
-        aria="Neues Date speichern"
+        aria="speichern"
         type="submit"
-        text="speichern"
         alt="speichern Icon"
         source="/check-icon-round.svg"
+        text={defaultData ? "Änderung speichern" : "speichern"}
       />
     </StyledForm>
   );

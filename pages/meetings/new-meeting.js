@@ -12,6 +12,7 @@ export default function NewMeetingPage({ onSubmit }) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
+    console.log(data.date);
     const transformedDate = transformDate(data.date);
     const attendingDogs = transformAttending(data.attending);
     console.log(attending);
@@ -84,7 +85,13 @@ export default function NewMeetingPage({ onSubmit }) {
   return (
     <>
       <Header />
-      <NewMeetingForm onSubmit={handleSubmit} />{" "}
+      <NewMeetingForm
+        onSubmit={handleSubmit}
+        formTitle="Plan ein DogDate!"
+        description="Lass deinen Hund mit anderen Fellnasen toben und lerne dabei selbst neue
+        Menschen kennen. Leg ein neues DogDate an, damit andere daran teilnehmen
+        können."
+      />
     </>
   );
 }

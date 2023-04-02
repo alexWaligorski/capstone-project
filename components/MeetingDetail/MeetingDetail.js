@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import ImageWithText from "../ImageWithText/ImageWithText";
 import DogList from "../DogList/DogList";
+import Link from "next/link";
 
 export default function MeetingDetail({ data }) {
   const { location, date, time, excluded, furtherInfo, attending, id } = data;
@@ -32,6 +33,7 @@ export default function MeetingDetail({ data }) {
         <StyledSubHeading>Wir sind dabei:</StyledSubHeading>
         <DogList id={id} attendingDogs={attending} />
       </StyledInfobox>
+      <Link href={`/meetings/${id}/edit`}>bearbeiten</Link>
     </StyledArticle>
   );
 }
