@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Header from "../../../components/Header/Header";
 import { useRouter } from "next/router";
-import { useMeetingStore } from "../..";
+import { useMeetingStore } from "../../../store";
 
 export default function MeetingPage() {
   const meetings = useMeetingStore((state) => state.meetings);

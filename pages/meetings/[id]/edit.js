@@ -1,7 +1,7 @@
 import NewMeetingForm from "../../../components/NewMeetingForm/NewMeetingForm";
 import Header from "../../../components/Header/Header";
 import { useRouter } from "next/router";
-import { useMeetingStore } from "../../index";
+import { useMeetingStore } from "../../../store";
 
 export default function EditMeetingPage() {
   const meetings = useMeetingStore((state) => state.meetings);

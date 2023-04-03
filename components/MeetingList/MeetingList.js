@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 import MeetingEntry from "../MeetingEntry/MeetingEntry";
-import { useMeetingStore } from "../../pages";
+import { useMeetingStore } from "../../store";
 
 export default function MeetingList() {
   const meetings = useMeetingStore((state) => state.meetings);

@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { produce } from "immer";
 
 export const useMeetingStore = create((set) => ({
   meetings: [
@@ -19,5 +20,12 @@ export const useMeetingStore = create((set) => ({
   ],
 
   addMeeting: (meeting) =>
-    set((state) => ({ meetings: [...state.meetings, meeting] })),
+    set(
+      produce((draft) => {
+        draft.meetings.push(meeting);
+      })
+    ),
 }));
+
+/* addMeeting: (meeting) =>
+set((state) => ({ meetings: [...state.meetings, meeting] })), */

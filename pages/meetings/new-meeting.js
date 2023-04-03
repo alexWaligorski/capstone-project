@@ -1,6 +1,6 @@
 import NewMeetingForm from "../../components/NewMeetingForm/NewMeetingForm";
 import Header from "../../components/Header/Header";
-import { useMeetingStore } from "../../pages";
+import { useMeetingStore } from "../../store";
 import { useRouter } from "next/router";
 import { uid } from "uid";
 
