@@ -2,6 +2,7 @@ import styled from "styled-components";
 import ImageWithText from "../ImageWithText/ImageWithText";
 import DogList from "../DogList/DogList";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function MeetingDetail({ data }) {
   const { location, date, time, excluded, furtherInfo, attending, id } = data;
@@ -33,7 +34,15 @@ export default function MeetingDetail({ data }) {
         <StyledSubHeading>Wir sind dabei:</StyledSubHeading>
         <DogList id={id} attendingDogs={attending} />
       </StyledInfobox>
-      <Link href={`/meetings/${id}/edit`}>bearbeiten</Link>
+      <StyledLink href={`/meetings/${id}/edit`}>
+        <StyledIcon
+          src="/edit-icon.svg"
+          alt="stift icon"
+          width={20}
+          height={20}
+        />
+        bearbeiten
+      </StyledLink>
     </StyledArticle>
   );
 }
@@ -71,4 +80,24 @@ const StyledHeading = styled.h2`
 const StyledSubHeading = styled.h3`
   margin-bottom: 0.5rem;
   font-weight: bold;
+`;
+
+const StyledLink = styled(Link)`
+  display: inline-block;
+  line-height: 1rem;
+  width: auto;
+  padding: 0.5rem 1rem 0.7rem 0.5rem;
+  text-align: center;
+  margin: 2.5rem 0 3vh 40vw;
+  color: var(--white);
+  background-color: var(--orange);
+  border-radius: 10px;
+  text-decoration: none;
+`;
+
+const StyledIcon = styled(Image)`
+  position: relative;
+  top: 5px;
+  left: 5px;
+  margin-right: 1rem;
 `;

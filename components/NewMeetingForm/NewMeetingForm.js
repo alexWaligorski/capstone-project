@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ButtonWithIcon from "../ButtonWithIcon/ButtonWithIcon";
+
 export default function NewMeetingForm({
   onSubmit,
   formTitle,
@@ -134,7 +135,7 @@ export default function NewMeetingForm({
         type="submit"
         alt="speichern Icon"
         source="/check-icon-round.svg"
-        text={defaultData ? "Änderung speichern" : "speichern"}
+        text="speichern"
       />
     </StyledForm>
   );
