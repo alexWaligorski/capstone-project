@@ -18,11 +18,12 @@ export default function EditMeetingPage({ onSubmit }) {
   const transformedMeeting =
     transformMeetingDataToDefaultData(requestedMeeting);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-    const editedMeetingData = transformFormDataToMeetingData(data);
+  function handleSubmit(dataFromEditedEntry) {
+    /* event.preventDefault(); */
+    /*     const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData); */
+    const editedMeetingData =
+      transformFormDataToMeetingData(dataFromEditedEntry);
     console.log("edited", editedMeetingData);
 
     if (onSubmit) onSubmit(editedMeetingData);

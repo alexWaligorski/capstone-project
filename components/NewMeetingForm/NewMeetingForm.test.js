@@ -54,7 +54,9 @@ test("submits edited form data when fields are altered", async () => {
   const welpen = screen.getByTestId("welpen");
   const form = screen.getByTestId("form");
 
+  await userEvent.clear(location);
   await user.type(location, "Elbstrand");
+  await userEvent.clear(attending);
   await user.type(attending, "Fiete, Lore");
   fireEvent.change(date, "2020-05-24");
   fireEvent.change(time, "16:00");

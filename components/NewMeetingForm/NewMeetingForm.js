@@ -9,7 +9,12 @@ export default function NewMeetingForm({
 }) {
   return (
     <StyledForm
-      onSubmit={onSubmit}
+      onSubmit={(event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData);
+        onSubmit(data);
+      }}
       aria-labelledby={formTitle}
       aria-describedby="description"
       data-testid="form"

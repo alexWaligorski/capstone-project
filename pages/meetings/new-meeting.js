@@ -8,11 +8,8 @@ export default function NewMeetingPage({ onSubmit }) {
   const router = useRouter();
   const createMeeting = useMeetingStore((state) => state.createMeeting);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-    const meetingData = transformFormDataToMeetingData(data);
+  function handleSubmit(dataFromAddedEntry) {
+    const meetingData = transformFormDataToMeetingData(dataFromAddedEntry);
 
     if (onSubmit) onSubmit(meetingData);
     createMeeting(meetingData);
