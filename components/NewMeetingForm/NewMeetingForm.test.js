@@ -58,16 +58,16 @@ test("submits edited form data when fields are altered", async () => {
   await user.type(location, "Elbstrand");
   await userEvent.clear(attending);
   await user.type(attending, "Fiete, Lore");
-  fireEvent.change(date, "2020-05-24");
-  fireEvent.change(time, "16:00");
-  fireEvent.click(urueden);
-  fireEvent.click(krueden);
-  fireEvent.click(uhuendinnen);
-  fireEvent.click(khuendinnen);
-  fireEvent.click(lhuendinnen);
-  fireEvent.click(welpen);
+  await user.type(date, "2020-05-24");
+  await user.type(time, "16:00");
+  await user.click(urueden);
+  await user.click(krueden);
+  await user.click(uhuendinnen);
+  await user.click(khuendinnen);
+  await user.click(lhuendinnen);
+  await user.click(welpen);
 
-  fireEvent.submit(form);
+  await user.submit(form);
 
   expect(onSubmit).toHaveBeenCalledWith({
     id: "0",
