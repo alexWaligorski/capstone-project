@@ -21,7 +21,7 @@ export function transformFormDataToMeetingData(formData) {
   const attendingDogs = transformAttendingToArray(formData.attending);
   const excludedString = transformExclusionCriteriaToString(formData);
 
-  const meetingData = {
+  return {
     ...formData,
     id: formData.id ? formData.id : uid(),
     date: transformedDate,
@@ -94,23 +94,29 @@ export function transformExclusionCriteriaToString(data) {
 
   if (data.unkastrierterueden === "on") {
     excludedArray.push("unkastrierte Rüden");
+    delete data.unkastrierterueden;
   }
 
   if (data.kastrierterueden === "on") {
     excludedArray.push("kastrierte Rüden");
+    delete data.kastrierterueden;
   }
 
   if (data.kastriertehuendinnen === "on") {
     excludedArray.push("kastrierte Hündinnen");
+    delete data.kastriertehuendinnen;
   }
   if (data.unkastriertehuendinnen === "on") {
     excludedArray.push("unkastrierte Hündinnen");
+    delete data.unkastriertehuendinnen;
   }
   if (data.laeufigehuendinnen === "on") {
     excludedArray.push("läufige Hündinnen");
+    delete data.laeufigehuendinnen;
   }
   if (data.welpen === "on") {
     excludedArray.push("Welpen");
+    delete data.welpen;
   }
 
   let excluded = excludedArray.join(", ");
