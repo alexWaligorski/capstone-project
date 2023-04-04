@@ -52,7 +52,7 @@ test("submits edited form data when fields are altered", async () => {
   const khuendinnen = screen.getByTestId("kastriertehuendinnen");
   const lhuendinnen = screen.getByTestId("laeufigehuendinnen");
   const welpen = screen.getByTestId("welpen");
-  const button = screen.getByRole("button", { name: "speichern" });
+  const form = screen.getByTestId("form");
 
   await user.type(location, "Elbstrand");
   await user.type(attending, "Fiete, Lore");
@@ -65,7 +65,7 @@ test("submits edited form data when fields are altered", async () => {
   fireEvent.click(lhuendinnen);
   fireEvent.click(welpen);
 
-  await user.click(button);
+  fireEvent.submit(form);
 
   expect(onSubmit).toHaveBeenCalledWith({
     id: "0",
