@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import Image from "next/image";
-export default function ButtonWithIcon({ text, source, alt, aria, type }) {
+export default function ButtonWithIcon({ text, source, alt, label, type }) {
   return (
-    <StyledButton type={type} aria-label={aria}>
+    <StyledButton type={type} aria-label={label}>
       <StyledIcon src={source} alt={alt} width={20} height={20} />
       {text}
     </StyledButton>
