@@ -147,6 +147,7 @@ export default function NewMeetingForm({
         alt="speichern Icon"
         source="/check-icon-round.svg"
         text="speichern"
+        data-testid="button"
       />
     </StyledForm>
   );

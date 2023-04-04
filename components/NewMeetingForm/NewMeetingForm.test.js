@@ -52,7 +52,7 @@ test("submits edited form data when fields are altered", async () => {
   const khuendinnen = screen.getByTestId("kastriertehuendinnen");
   const lhuendinnen = screen.getByTestId("laeufigehuendinnen");
   const welpen = screen.getByTestId("welpen");
-  const button = screen.getByRole("button");
+  const button = screen.getByRole("button", { name: "speichern" });
 
   await user.type(location, "Elbstrand");
   await user.type(attending, "Fiete, Lore");
