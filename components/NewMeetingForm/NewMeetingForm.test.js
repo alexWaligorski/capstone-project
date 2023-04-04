@@ -42,32 +42,32 @@ test("submits edited form data when fields are altered", async () => {
 
   const user = userEvent.setup();
 
-  const location = screen.getByTestId("location");
-  const date = screen.getByTestId("date");
-  const time = screen.getByTestId("time");
-  const attending = screen.getByTestId("attending");
-  const urueden = screen.getByTestId("unkastrierterueden");
-  const krueden = screen.getByTestId("kastrierterueden");
-  const uhuendinnen = screen.getByTestId("unkastriertehuendinnen");
-  const khuendinnen = screen.getByTestId("kastriertehuendinnen");
-  const lhuendinnen = screen.getByTestId("laeufigehuendinnen");
-  const welpen = screen.getByTestId("welpen");
-  const form = screen.getByTestId("form");
+  const location = screen.getByLabelText("Ort:");
+  const date = screen.getByLabelText("Datum:");
+  const time = screen.getByLabelText("Uhrzeit:");
+  const attending = screen.getByLabelText("Teilnehmende:");
+  const urueden = screen.getByLabelText("unkastrierte Rüden");
+  const krueden = screen.getByLabelText("kastrierte Rüden");
+  const uhuendinnen = screen.getByLabelText("unkastrierte Hündinnen");
+  const khuendinnen = screen.getByLabelText("kastrierte Hündinnen");
+  const lhuendinnen = screen.getByLabelText("läufige Hündinnen");
+  const welpen = screen.getByLabelText("Welpen");
+  const form = screen.getByLabelText("Angaben ändern?");
 
   await userEvent.clear(location);
   await user.type(location, "Elbstrand");
   await userEvent.clear(attending);
   await user.type(attending, "Fiete, Lore");
-  await user.type(date, "2020-05-24");
-  await user.type(time, "16:00");
-  await user.click(urueden);
-  await user.click(krueden);
-  await user.click(uhuendinnen);
-  await user.click(khuendinnen);
-  await user.click(lhuendinnen);
-  await user.click(welpen);
+  fireEvent.change(date, "2020-05-24");
+  fireEvent.change(time, "16:00");
+  fireEvent.click(urueden);
+  fireEvent.click(krueden);
+  fireEvent.click(uhuendinnen);
+  fireEvent.click(khuendinnen);
+  fireEvent.click(lhuendinnen);
+  fireEvent.click(welpen);
 
-  await user.submit(form);
+  fireEvent.submit(form);
 
   expect(onSubmit).toHaveBeenCalledWith({
     id: "0",

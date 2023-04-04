@@ -15,7 +15,7 @@ export default function NewMeetingForm({
         const data = Object.fromEntries(formData);
         onSubmit(data);
       }}
-      aria-labelledby={formTitle}
+      aria-labelledby="formTitle"
       aria-describedby="description"
       data-testid="form"
     >
@@ -26,7 +26,9 @@ export default function NewMeetingForm({
         defaultValue={defaultData?.id}
         hidden
       />
-      <h2 name="formTitle">{formTitle}</h2>
+      <h2 id="formTitle" name="formTitle">
+        {formTitle}
+      </h2>
       <p name="description"> {description} </p>
       <label htmlFor="location">Ort:</label>
       <input

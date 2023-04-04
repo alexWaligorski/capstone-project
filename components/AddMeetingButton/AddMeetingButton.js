@@ -4,29 +4,27 @@ import Image from "next/image";
 
 export default function AddMeetingButton() {
   return (
-    <StyledAddButton>
-      <StyledLink href="/meetings/new-meeting">NEUES DATE</StyledLink>
+    <StyledLink href="/meetings/new-meeting">
+      NEUES DATE
       <StyledIcon src="/plus-icon.svg" alt="plus icon" width={20} height={20} />
-    </StyledAddButton>
+    </StyledLink>
   );
 }
 
-const StyledAddButton = styled.div`
+const StyledLink = styled(Link)`
   background-color: var(--yellow);
+  text-decoration: none;
   border-radius: 10px;
   width: auto;
   padding: 0.5rem 1rem;
   margin-top: 1rem;
+  color: var(--black);
 `;
 
 const StyledIcon = styled(Image)`
-  position: relative;
-  top: 4px;
-  left: 5px;
-`;
-
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: var(--black);
-  margin-bottom: 1rem;
+   {
+    position: relative;
+    top: 4px;
+    left: 5px;
+  }
 `;
