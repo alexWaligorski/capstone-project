@@ -30,19 +30,6 @@ test("submit handler is called on form submit", async () => {
   expect(onSubmit).toHaveBeenCalled();
 });
 
-/* test("edited DogDate is shown on screen after submit, when location is changed from Volkspark to Elbstrand", async () => {
-  useRouter.mockImplementation(() => ({
-    push: jest.fn(),
-  }));
-  const onSubmit = jest.fn();
-
-  render(<NewMeetingForm onSubmit={onSubmit} />);
-
-  const form = screen.getByTestId("form");
-  fireEvent.submit(form);
-  expect(onSubmit).toHaveBeenCalled();
-}); */
-
 test("submits edited form data when fields are altered", async () => {
   const onSubmit = jest.fn();
   render(
@@ -95,30 +82,3 @@ test("submits edited form data when fields are altered", async () => {
     welpen: "on",
   });
 });
-
-/* test("renders two 11 visible input fields, 1 heading, 1 paragraph and 1 button", () => {
-  useRouter.mockImplementation(() => ({
-    push: jest.fn(),
-  }));
-  const onSubmit = jest.fn();
-  render(
-    <NewMeetingForm
-      onSubmit={onSubmit}
-      formTitle="Plan ein DogDate"
-      defaultData={defaultData}
-    />
-  );
-
-  const textinput = screen.getAllByRole("textbox");
-  expect(textinput).toHaveLength(3);
-
-  const checkbox = screen.getAllByRole("checkbox");
-  expect(checkbox).toHaveLength(6);
-
-  const time = getByRole("time");
-  expect(time).toHaveLength(2);
-
-  const button = screen.getByRole("button");
-  expect(button).toBeInTheDocument();
-});
- */
