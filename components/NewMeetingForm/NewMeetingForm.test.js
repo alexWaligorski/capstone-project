@@ -23,9 +23,15 @@ test("submit handler is called on form submit", async () => {
   }));
   const onSubmit = jest.fn();
 
-  render(<NewMeetingForm onSubmit={onSubmit} />);
+  render(
+    <NewMeetingForm
+      onSubmit={onSubmit}
+      formTitle="Angaben ändern?"
+      defaultData={defaultData}
+    />
+  );
 
-  const form = screen.getByTestId("form");
+  const form = screen.getByLabelText("Angaben ändern?");
   fireEvent.submit(form);
   expect(onSubmit).toHaveBeenCalled();
 });
@@ -52,22 +58,22 @@ test("submits edited form data when fields are altered", async () => {
   const khuendinnen = screen.getByLabelText("kastrierte Hündinnen");
   const lhuendinnen = screen.getByLabelText("läufige Hündinnen");
   const welpen = screen.getByLabelText("Welpen");
-  const form = screen.getByLabelText("Angaben ändern?");
+  const submitButton = screen.getByRole("button");
 
-  await userEvent.clear(location);
+  await user.clear(location);
   await user.type(location, "Elbstrand");
-  await userEvent.clear(attending);
+  await user.clear(attending);
   await user.type(attending, "Fiete, Lore");
-  fireEvent.change(date, "2020-05-24");
-  fireEvent.change(time, "16:00");
-  fireEvent.click(urueden);
-  fireEvent.click(krueden);
-  fireEvent.click(uhuendinnen);
-  fireEvent.click(khuendinnen);
-  fireEvent.click(lhuendinnen);
-  fireEvent.click(welpen);
+  await user.click(date, { target: { value: "2020-05-24" } });
+  await user.click(time, { target: { value: "16:00" } });
+  await user.click(urueden);
+  await user.click(krueden);
+  await user.click(uhuendinnen);
+  await user.click(khuendinnen);
+  await user.click(lhuendinnen);
+  await user.click(welpen);
 
-  fireEvent.submit(form);
+  await user.click(submitButton);
 
   expect(onSubmit).toHaveBeenCalledWith({
     id: "0",

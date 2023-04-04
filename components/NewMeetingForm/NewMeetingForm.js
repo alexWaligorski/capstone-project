@@ -17,7 +17,6 @@ export default function NewMeetingForm({
       }}
       aria-labelledby="formTitle"
       aria-describedby="description"
-      data-testid="form"
     >
       <input
         type="text"
@@ -37,7 +36,6 @@ export default function NewMeetingForm({
         id="location"
         maxLength="50"
         defaultValue={defaultData?.location}
-        data-testid="location"
         required
       />
       <label htmlFor="date">Datum:</label>
@@ -46,7 +44,6 @@ export default function NewMeetingForm({
         name="date"
         id="date"
         defaultValue={defaultData?.date}
-        data-testid="date"
         required
       />
       <label htmlFor="time">Uhrzeit:</label>
@@ -55,7 +52,6 @@ export default function NewMeetingForm({
         name="time"
         id="time"
         defaultValue={defaultData?.time}
-        data-testid="time"
         required
       />
       <label htmlFor="attending">Teilnehmende:</label>
@@ -64,7 +60,6 @@ export default function NewMeetingForm({
         name="attending"
         id="attending"
         defaultValue={defaultData?.attending}
-        data-testid="attending"
         required
       />
       <StyledFieldset>
@@ -74,7 +69,6 @@ export default function NewMeetingForm({
             type="checkbox"
             name="unkastrierterueden"
             id="unkastrierterueden"
-            data-testid="unkastrierterueden"
             defaultChecked={defaultData?.unkastrierterueden}
           />
           <StyledCheckboxLabel htmlFor="unkastrierterueden">
@@ -86,7 +80,6 @@ export default function NewMeetingForm({
             type="checkbox"
             name="kastrierterueden"
             id="kastrierterueden"
-            data-testid="kastrierterueden"
             defaultChecked={defaultData?.kastrierterueden}
           />
           <StyledCheckboxLabel htmlFor="kastrierterueden">
@@ -98,7 +91,6 @@ export default function NewMeetingForm({
             type="checkbox"
             name="unkastriertehuendinnen"
             id="unkastriertehuendinnen"
-            data-testid="unkastriertehuendinnen"
             defaultChecked={defaultData?.unkastriertehuendinnen}
           />
           <StyledCheckboxLabel htmlFor="unkastriertehuendinnen">
@@ -110,7 +102,6 @@ export default function NewMeetingForm({
             type="checkbox"
             name="kastriertehuendinnen"
             id="kastriertehuendinnen"
-            data-testid="kastriertehuendinnen"
             defaultChecked={defaultData?.kastriertehuendinnen}
           />
           <StyledCheckboxLabel htmlFor="kastriertehuendinnen">
@@ -122,7 +113,6 @@ export default function NewMeetingForm({
             type="checkbox"
             name="laeufigehuendinnen"
             id="laeufigehuendinnen"
-            data-testid="laeufigehuendinnen"
             defaultChecked={defaultData?.laeufigehuendinnen}
           />
           <StyledCheckboxLabel htmlFor="laeufigehuendinnen">
@@ -134,7 +124,6 @@ export default function NewMeetingForm({
             type="checkbox"
             name="welpen"
             id="welpen"
-            data-testid="welpen"
             defaultChecked={defaultData?.welpen}
           />
           <StyledCheckboxLabel htmlFor="welpen">Welpen</StyledCheckboxLabel>
@@ -154,7 +143,6 @@ export default function NewMeetingForm({
         alt="speichern Icon"
         source="/check-icon-round.svg"
         text="speichern"
-        data-testid="button"
       />
     </StyledForm>
   );
