@@ -8,7 +8,7 @@ export const useMeetingStore = create((set) => ({
       location: "Volkspark",
       date: "14.04.2023",
       time: "15:00",
-      excluded: "Unkastrierte Rüden, Welpen, läufige Hündinnen",
+      excluded: "unkastrierte Rüden, Welpen, läufige Hündinnen",
       furtherInfo: "Nur bei gutem Wetter!",
       attending: [
         { id: "A", name: "Fiete" },
@@ -19,13 +19,20 @@ export const useMeetingStore = create((set) => ({
     },
   ],
 
-  addMeeting: (meeting) =>
+  createMeeting: (meeting) =>
     set(
       produce((draft) => {
         draft.meetings.push(meeting);
       })
     ),
-}));
 
-/* addMeeting: (meeting) =>
-set((state) => ({ meetings: [...state.meetings, meeting] })), */
+  updateMeeting: (updatedMeeting) =>
+    set(
+      produce((draft) => {
+        let index = draft.meetings.findIndex(
+          (currentMeeting) => currentMeeting.id === updatedMeeting.id
+        );
+        draft.meetings[index] = updatedMeeting;
+      })
+    ),
+}));
