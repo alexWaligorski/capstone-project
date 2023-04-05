@@ -6,7 +6,7 @@ export default function MeetingEntry({ meeting }) {
     <StyledEntry>
       <StyledEntryHeading>{meeting.location}</StyledEntryHeading>
       <StyledDiv>
-        <span>{meeting.date}</span> {" / "} <span>{meeting.time}</span> {" / "}{" "}
+        <span>{meeting.date}</span> {" | "} <span>{meeting.time}</span> {" | "}{" "}
         <span>{meeting.attending.length}</span>
         <StyledDogIcon
           src="dog-icon.svg"
@@ -27,8 +27,6 @@ const StyledDiv = styled.div`
 `;
 
 const StyledEntry = styled.section`
-  border: 2px solid black;
-  border-radius: 8px;
   padding: 1rem 1rem;
   width: 85vw;
   text-align: left;
@@ -42,7 +40,7 @@ const StyledDogIcon = styled(Image)`
 `;
 
 const StyledEntryHeading = styled.h3`
-  color: #f85220;
+  color: var(--orange);
   font-weight: bold;
   margin: 0 0 0.5rem; ;
 `;

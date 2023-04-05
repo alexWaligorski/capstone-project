@@ -1,26 +1,67 @@
 import styled from "styled-components";
-export default function NewMeetingForm({ onSubmit }) {
+import ButtonWithIcon from "../ButtonWithIcon/ButtonWithIcon";
+
+export default function NewMeetingForm({
+  onSubmit,
+  formTitle,
+  defaultData,
+  description,
+}) {
   return (
     <StyledForm
-      onSubmit={onSubmit}
-      aria-labelledby="headline"
+      onSubmit={(event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData);
+        onSubmit(data);
+      }}
+      aria-labelledby="formTitle"
       aria-describedby="description"
-      data-testid="form"
     >
-      <h2 name="headline">Plan ein DogDate!</h2>
-      <p name="description">
-        Lass deinen Hund mit anderen Fellnasen toben und lerne dabei selbst neue
-        Menschen kennen. Leg ein neues DogDate an, damit andere daran teilnehmen
-        können.{" "}
-      </p>
+      <input
+        type="text"
+        name="id"
+        id="id"
+        defaultValue={defaultData?.id}
+        hidden
+      />
+      <h2 id="formTitle" name="formTitle">
+        {formTitle}
+      </h2>
+      <p name="description"> {description} </p>
       <label htmlFor="location">Ort:</label>
-      <input type="text" name="location" id="location" required />
+      <input
+        type="text"
+        name="location"
+        id="location"
+        maxLength="50"
+        defaultValue={defaultData?.location}
+        required
+      />
       <label htmlFor="date">Datum:</label>
-      <input type="date" name="date" id="date" required />
+      <input
+        type="date"
+        name="date"
+        id="date"
+        defaultValue={defaultData?.date}
+        required
+      />
       <label htmlFor="time">Uhrzeit:</label>
-      <input type="time" name="time" id="time" required />
+      <input
+        type="time"
+        name="time"
+        id="time"
+        defaultValue={defaultData?.time}
+        required
+      />
       <label htmlFor="attending">Teilnehmende:</label>
-      <input type="text" name="attending" id="attending" required />
+      <input
+        type="text"
+        name="attending"
+        id="attending"
+        defaultValue={defaultData?.attending}
+        required
+      />
       <StyledFieldset>
         <legend>Leider dürfen folgende Hunde nicht teilnehmen:</legend>
         <span>
@@ -28,61 +69,81 @@ export default function NewMeetingForm({ onSubmit }) {
             type="checkbox"
             name="unkastrierterueden"
             id="unkastrierterueden"
-            data-testid="unkastrierterueden"
+            defaultChecked={defaultData?.unkastrierterueden}
           />
-          <label htmlFor="unkastrierterueden">unkastrierte Rüden</label>
+          <StyledCheckboxLabel htmlFor="unkastrierterueden">
+            unkastrierte Rüden
+          </StyledCheckboxLabel>
         </span>
         <span>
           <input
             type="checkbox"
             name="kastrierterueden"
             id="kastrierterueden"
-            data-testid="kastrierterueden"
+            defaultChecked={defaultData?.kastrierterueden}
           />
-          <label htmlFor="kastrierterueden">kastrierte Rüden</label>
+          <StyledCheckboxLabel htmlFor="kastrierterueden">
+            kastrierte Rüden
+          </StyledCheckboxLabel>
         </span>
         <span>
           <input
             type="checkbox"
             name="unkastriertehuendinnen"
             id="unkastriertehuendinnen"
-            data-testid="unkastriertehuendinnen"
+            defaultChecked={defaultData?.unkastriertehuendinnen}
           />
-          <label htmlFor="unkastriertehuendinnen">unkastrierte Hündinnen</label>
+          <StyledCheckboxLabel htmlFor="unkastriertehuendinnen">
+            unkastrierte Hündinnen
+          </StyledCheckboxLabel>
         </span>
         <span>
           <input
             type="checkbox"
             name="kastriertehuendinnen"
             id="kastriertehuendinnen"
-            data-testid="kastriertehuendinnen"
+            defaultChecked={defaultData?.kastriertehuendinnen}
           />
-          <label htmlFor="kastriertehuendinnen">kastrierte Hündinnen</label>
+          <StyledCheckboxLabel htmlFor="kastriertehuendinnen">
+            kastrierte Hündinnen
+          </StyledCheckboxLabel>
         </span>
         <span>
           <input
             type="checkbox"
             name="laeufigehuendinnen"
             id="laeufigehuendinnen"
-            data-testid="laeufigehuendinnen"
+            defaultChecked={defaultData?.laeufigehuendinnen}
           />
-          <label htmlFor="laeufigehuendinnen">läufige Hündinnen</label>
+          <StyledCheckboxLabel htmlFor="laeufigehuendinnen">
+            läufige Hündinnen
+          </StyledCheckboxLabel>
         </span>
         <span>
           <input
             type="checkbox"
             name="welpen"
             id="welpen"
-            data-testid="welpen"
+            defaultChecked={defaultData?.welpen}
           />
-          <label htmlFor="welpen">Welpen</label>
+          <StyledCheckboxLabel htmlFor="welpen">Welpen</StyledCheckboxLabel>
         </span>
       </StyledFieldset>
-      <label htmlFor="info">Weitere Infos zum Date:</label>
-      <input type="text-area" name="info" id="info" />
-      <button aria-label="Neues Date speichern" type="submit">
-        Speichern
-      </button>
+      <label htmlFor="furtherInfo">Weitere Infos zum Date:</label>
+      <input
+        type="text"
+        name="furtherInfo"
+        id="furtherInfo"
+        maxLength="300"
+        defaultValue={defaultData?.furtherInfo}
+      />
+      <ButtonWithIcon
+        aria="speichern"
+        type="submit"
+        alt="speichern Icon"
+        source="/check-icon-round.svg"
+        text="speichern"
+      />
     </StyledForm>
   );
 }
@@ -93,8 +154,10 @@ const StyledForm = styled.form`
   justify-content: center;
   width: 90vw;
   margin-left: 5vw;
+  margin-top: 11vh;
   gap: 0.5rem;
   padding-bottom: 2rem;
+  color: var(--white);
 `;
 
 const StyledFieldset = styled.fieldset`
@@ -103,4 +166,8 @@ const StyledFieldset = styled.fieldset`
   margin: 0.7rem 0;
   gap: 0.25rem;
   border-radius: 8px;
+`;
+
+const StyledCheckboxLabel = styled.label`
+  margin-left: 0.8rem;
 `;

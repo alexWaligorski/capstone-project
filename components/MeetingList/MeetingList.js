@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import Link from "next/link";
 import MeetingEntry from "../MeetingEntry/MeetingEntry";
-import { useMeetingStore } from "../../pages";
+import { useMeetingStore } from "../../store/store";
 
 export default function MeetingList() {
   const meetings = useMeetingStore((state) => state.meetings);
 
   return (
     <>
-      <h2>Geplante Dates</h2>
+      <StyledHeading>Geplante Dates</StyledHeading>
       {meetings.length !== 0 ? (
         <ul>
           {meetings.map((meeting) => (
@@ -28,15 +28,21 @@ export default function MeetingList() {
 
 const StyledEntry = styled(Link)`
   text-decoration: none;
-  color: #000000;
+  color: var(--black);
   &:visited {
-    color: #000000;
+    color: var(--black);
   }
 `;
 
 const StyledListItem = styled.li`
-  background-color: #ffffff;
+  border: 2px solid black;
+  border-radius: 8px;
+  background-color: var(--white);
   &:hover {
-    background-color: #fcebcc;
+    background-color: var(--yellow-hover);
   }
+`;
+
+const StyledHeading = styled.h2`
+  color: var(--white);
 `;

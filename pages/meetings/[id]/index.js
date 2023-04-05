@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import MeetingDetail from "../../components/MeetingDetail/MeetingDetail";
+import MeetingDetail from "../../../components/MeetingDetail/MeetingDetail";
 import Link from "next/link";
 import Image from "next/image";
+import Header from "../../../components/Header/Header";
 import { useRouter } from "next/router";
-import { useMeetingStore } from "..";
+import { useMeetingStore } from "../../../store/store";
 
 export default function MeetingPage() {
   const meetings = useMeetingStore((state) => state.meetings);
@@ -16,6 +17,7 @@ export default function MeetingPage() {
 
   return (
     <>
+      <Header />
       <MeetingDetail data={requestedMeeting} />
       <StyledLink href="/">
         <StyledIcon
@@ -36,10 +38,11 @@ const StyledLink = styled(Link)`
   width: auto;
   padding: 1rem;
   text-align: center;
-  margin: 2rem 0 0 5vw;
+  margin: 2rem 0 3vh 5vw;
   color: #000000;
-  background-color: #f7d702;
+  background-color: var(--yellow);
   border-radius: 10px;
+  text-decoration: none;
 `;
 
 const StyledIcon = styled(Image)`

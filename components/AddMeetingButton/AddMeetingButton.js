@@ -1,20 +1,30 @@
 import styled from "styled-components";
 import Link from "next/link";
+import Image from "next/image";
+
 export default function AddMeetingButton() {
   return (
-    <StyledAddButton href="/meetings/new-meeting">
-      Neues Date anlegen
-    </StyledAddButton>
+    <StyledLink href="/meetings/new-meeting">
+      NEUES DATE
+      <StyledIcon src="/plus-icon.svg" alt="plus icon" width={20} height={20} />
+    </StyledLink>
   );
 }
 
-const StyledAddButton = styled(Link)`
+const StyledLink = styled(Link)`
+  background-color: var(--yellow);
   text-decoration: none;
-  color: #000000;
-  background-color: #f7d702;
-  vertical-align: middle;
-  line-height: 2rem;
+  border-radius: 10px;
   width: auto;
   padding: 0.5rem 1rem;
-  border-radius: 10px;
+  margin-top: 1rem;
+  color: var(--black);
+`;
+
+const StyledIcon = styled(Image)`
+   {
+    position: relative;
+    top: 4px;
+    left: 5px;
+  }
 `;
