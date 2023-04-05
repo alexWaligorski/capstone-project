@@ -35,4 +35,14 @@ export const useMeetingStore = create((set) => ({
         draft.meetings[index] = updatedMeeting;
       })
     ),
+
+  deleteMeeting: (deletedMeeting) =>
+    set(
+      produce((draft) => {
+        let index = draft.meetings.findIndex(
+          (deletedMeeting) => currentMeeting.id === deletedMeeting.id
+        );
+        draft.meetings.splice(index, 1);
+      })
+    ),
 }));
