@@ -3,9 +3,24 @@ import ImageWithText from "../ImageWithText/ImageWithText";
 import DogList from "../DogList/DogList";
 import Link from "next/link";
 import Image from "next/image";
+import ButtonWithIcon from "../ButtonWithIcon/ButtonWithIcon";
+import { useMeetingStore } from "../../store/store";
+import { useRouter } from "next/router";
 
 export default function MeetingDetail({ data }) {
+  const deleteMeeting = useMeetingStore((state) => state.deleteMeeting);
+  const router = useRouter();
+
+  if (!router.isReady || !data) {
+    return <h1>loading</h1>;
+  }
+
   const { location, date, time, excluded, furtherInfo, attending, id } = data;
+
+  function handleDelete() {
+    deleteMeeting(id);
+    router.push("/");
+  }
 
   return (
     <StyledArticle>
@@ -32,17 +47,28 @@ export default function MeetingDetail({ data }) {
       )}
       <StyledInfobox>
         <StyledSubHeading>Wir sind dabei:</StyledSubHeading>
-        <DogList id={id} attendingDogs={attending} />
+        <DogList attendingDogs={attending} />
       </StyledInfobox>
-      <StyledLink href={`/meetings/${id}/edit`}>
-        <StyledIcon
-          src="/edit-icon.svg"
-          alt="stift icon"
-          width={20}
-          height={20}
+      <StyledButtonWrapper>
+        <ButtonWithIcon
+          type="button"
+          functionality="delete"
+          text="löschen"
+          source="/delete-icon.svg"
+          alt="Kreuz Icon"
+          label="Klicken zum löschen"
+          handleClick={handleDelete}
         />
-        bearbeiten
-      </StyledLink>
+        <StyledLink href={`/meetings/${id}/edit`}>
+          <StyledIcon
+            src="/edit-icon.svg"
+            alt="stift icon"
+            width={20}
+            height={20}
+          />
+          bearbeiten
+        </StyledLink>
+      </StyledButtonWrapper>
     </StyledArticle>
   );
 }
@@ -67,6 +93,15 @@ const StyledInfobox = styled.div`
   width: 80%;
   margin: 1rem 0 0.5rem;
 `;
+
+const StyledButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+`;
 const StyledParagraph = styled.p`
   margin: 0.2rem 0 0;
 `;
@@ -85,10 +120,10 @@ const StyledSubHeading = styled.h3`
 const StyledLink = styled(Link)`
   display: inline-block;
   line-height: 1rem;
-  width: auto;
+  font-size: 14px;
+  width: 9rem;
   padding: 0.5rem 1rem 0.7rem 0.5rem;
   text-align: center;
-  margin: 2.5rem 0 3vh 40vw;
   color: var(--white);
   background-color: var(--orange);
   border-radius: 10px;
