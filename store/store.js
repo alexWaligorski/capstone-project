@@ -4,7 +4,7 @@ import { produce } from "immer";
 export const useMeetingStore = create((set) => ({
   meetings: [
     {
-      id: "0",
+      id: "5",
       location: "Volkspark",
       date: "14.04.2023",
       time: "15:00",
@@ -33,6 +33,16 @@ export const useMeetingStore = create((set) => ({
           (currentMeeting) => currentMeeting.id === updatedMeeting.id
         );
         draft.meetings[index] = updatedMeeting;
+      })
+    ),
+
+  deleteMeeting: (deletedMeeting) =>
+    set(
+      produce((draft) => {
+        let index = draft.meetings.findIndex(
+          (currentMeeting) => currentMeeting.id === deletedMeeting.id
+        );
+        draft.meetings.splice(index, 1);
       })
     ),
 }));

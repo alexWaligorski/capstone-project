@@ -15,6 +15,7 @@ export default createGlobalStyle`
   --brown: #914C27;
   --white: #ffffff;
   --black: #000000;
+  --red: #DB1E13;
   *,
   *::before,
   *::after {

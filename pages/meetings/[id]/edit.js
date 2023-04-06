@@ -21,7 +21,6 @@ export default function EditMeetingPage({ onSubmit }) {
   function handleSubmit(dataFromEditedEntry) {
     const editedMeetingData =
       transformFormDataToMeetingData(dataFromEditedEntry);
-    console.log("edited", editedMeetingData);
 
     if (onSubmit) onSubmit(editedMeetingData);
     updateMeeting(editedMeetingData);

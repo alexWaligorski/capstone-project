@@ -1,6 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import MeetingDetail from "./MeetingDetail";
 
+jest.mock("next/router", () => ({
+  useRouter: jest.fn().mockReturnValue({
+    isReady: true,
+  }),
+}));
+
 const allInfo = {
   location: "Volkspark",
   date: "12.04.23",
@@ -59,8 +65,15 @@ test("doesn't render exclusion criteria if no info is given", () => {
   expect(excluded).not.toBeInTheDocument();
 });
 
-test("renders further information if info is given", () => {
+test("renders exclusion criteria if info is given", () => {
   render(<MeetingDetail data={allInfo} />);
   const excluded = screen.queryByTestId("excluded");
   expect(excluded).toBeInTheDocument();
+});
+
+test("renders delete button", () => {
+  render(<MeetingDetail data={allInfo} />);
+  const deleteButton = screen.getByRole("button");
+
+  expect(deleteButton).toHaveTextContent("löschen");
 });
