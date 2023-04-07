@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useMeetingStore } from "../../../store/store";
 import { transformMeetingDataToDefaultData } from "../../../store/storeUtils";
 import { transformFormDataToMeetingData } from "../../../store/storeUtils";
+import NavBar from "../../../components/NavBar/NavBar";
 
 export default function EditMeetingPage({ onSubmit }) {
   const meetings = useMeetingStore((state) => state.meetings);
@@ -37,6 +38,7 @@ export default function EditMeetingPage({ onSubmit }) {
         description="Halte alle Teilnehmenden up to date! Bearbeite dein DogDate, falls sich deine Pläne ändern."
         defaultData={transformedMeeting}
       />
+      <NavBar />
     </>
   );
 }

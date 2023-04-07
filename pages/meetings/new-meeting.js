@@ -3,6 +3,7 @@ import Header from "../../components/Header/Header";
 import { useMeetingStore } from "../../store/store";
 import { useRouter } from "next/router";
 import { transformFormDataToMeetingData } from "../../store/storeUtils";
+import NavBar from "../../components/NavBar/NavBar";
 
 export default function NewMeetingPage({ onSubmit }) {
   const router = useRouter();
@@ -26,6 +27,7 @@ export default function NewMeetingPage({ onSubmit }) {
         Menschen kennen. Leg ein neues DogDate an, damit andere daran teilnehmen
         können."
       />
+      <NavBar />
     </>
   );
 }

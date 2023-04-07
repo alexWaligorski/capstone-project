@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <StyledHeader>
       <StyledHeaderIcon
-        src="/dog-icon.svg"
+        src="/black-white-dog-icon.svg"
         alt="dog-icon"
         width={40}
         height={40}
@@ -24,6 +24,7 @@ const StyledHeader = styled.header`
   position: fixed;
   top: 0;
   background-color: var(--white);
+  box-shadow: 0 3px 10px var(--stone);
 `;
 const Heading = styled.h1`
   margin-top: 0.8rem;

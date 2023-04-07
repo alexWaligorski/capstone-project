@@ -157,7 +157,7 @@ const StyledForm = styled.form`
   margin-left: 5vw;
   margin-top: 11vh;
   gap: 0.5rem;
-  padding-bottom: 2rem;
+  padding-bottom: 5rem;
   color: var(--white);
 `;
 

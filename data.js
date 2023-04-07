@@ -35,3 +35,13 @@ export const data = [
     attending: [{ id: "A", name: "Fiete" }],
   },
 ];
+
+export const dogInfo = {
+  name: "Lore",
+  age: "4 Jahre",
+  sex: "female",
+  excluded: "unkastrierte Rüden",
+  castrated: false,
+  inHeat: true,
+  owner: "Luise Schröder",
+};
