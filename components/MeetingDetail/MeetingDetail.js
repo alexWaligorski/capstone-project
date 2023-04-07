@@ -77,7 +77,7 @@ const StyledArticle = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90vw;
+  width: 90%;
   margin-top: 12vh;
   margin-left: 5vw;
   border: 2px solid black;

@@ -3,6 +3,7 @@ import MeetingDetail from "../../../components/MeetingDetail/MeetingDetail";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "../../../components/Header/Header";
+import NavBar from "../../../components/NavBar/NavBar";
 import { useRouter } from "next/router";
 import { useMeetingStore } from "../../../store/store";
 
@@ -26,19 +27,20 @@ export default function MeetingPage() {
           width={18}
           height={18}
         />
-        Alle Dates
+        zurück
       </StyledLink>
+      <NavBar />
     </>
   );
 }
 
 const StyledLink = styled(Link)`
   display: inline-block;
-  line-height: 1rem;
+  line-height: 0.5rem;
   width: auto;
   padding: 1rem;
   text-align: center;
-  margin: 2rem 0 3vh 5vw;
+  margin: 2rem 0 5rem 2rem;
   color: #000000;
   background-color: var(--yellow);
   border-radius: 10px;
