@@ -24,9 +24,7 @@ const StyledLink = styled(Link)`
 `;
 
 const StyledIcon = styled(Image)`
-   {
-    position: absolute;
-    top: 9px;
-    right: 9px;
-  }
+  position: absolute;
+  top: 9px;
+  right: 9px;
 `;

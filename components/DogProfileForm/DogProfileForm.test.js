@@ -21,32 +21,32 @@ test("submitting the form with correct data", async () => {
   const dogNameInput = screen.getByLabelText(/Name des Hundes:/i);
   const ownerNameInput = screen.getByLabelText(/Besitzer:in:/i);
   const birthyearInput = screen.getByLabelText(/Geburtsjahr des Hundes:/i);
-  const hundinRadio = screen.getByLabelText("Hündin", {
+  const femaleRadio = screen.getByLabelText("Hündin", {
     selector: 'input[name="sex"]',
   });
   const notCastratedRadio = screen.getByLabelText("Nein", {
     selector: 'input[id="unkastriert"]',
   });
-  const urueden = screen.getByLabelText("unkastrierte Rüden");
-  const krueden = screen.getByLabelText("kastrierte Rüden");
-  const uhuendinnen = screen.getByLabelText("unkastrierte Hündinnen");
-  const khuendinnen = screen.getByLabelText("kastrierte Hündinnen");
-  const lhuendinnen = screen.getByLabelText("läufige Hündinnen");
-  const welpen = screen.getByLabelText("Welpen");
+  const uncastratedMale = screen.getByLabelText("unkastrierte Rüden");
+  const castratedMale = screen.getByLabelText("kastrierte Rüden");
+  const uncastratedFemale = screen.getByLabelText("unkastrierte Hündinnen");
+  const castratedFemale = screen.getByLabelText("kastrierte Hündinnen");
+  const femaleInHeat = screen.getByLabelText("läufige Hündinnen");
+  const puppy = screen.getByLabelText("Welpen");
   const submitButton = screen.getByRole("button");
 
   await user.type(dogNameInput, "Nala");
   await user.type(ownerNameInput, "Max Mustermann");
   await user.clear(birthyearInput);
   await user.type(birthyearInput, "2015");
-  await user.click(hundinRadio);
+  await user.click(femaleRadio);
   await user.click(notCastratedRadio);
-  await user.click(urueden);
-  await user.click(krueden);
-  await user.click(uhuendinnen);
-  await user.click(khuendinnen);
-  await user.click(lhuendinnen);
-  await user.click(welpen);
+  await user.click(uncastratedMale);
+  await user.click(castratedMale);
+  await user.click(uncastratedFemale);
+  await user.click(castratedFemale);
+  await user.click(femaleInHeat);
+  await user.click(puppy);
 
   const inHeatRadio = screen.queryByLabelText("Ja", {
     selector: 'input[value="laeufig"]',

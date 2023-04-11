@@ -12,7 +12,7 @@ export default function ProfilePage() {
   return (
     <StyledMain>
       <Header />
-      {dogProfiles.length !== 0 ? (
+      {dogProfiles.length ? (
         <DogProfile dogData={dogInfo} />
       ) : (
         <AddButton text="NEUES PROFIL" href="/profile/edit" />
