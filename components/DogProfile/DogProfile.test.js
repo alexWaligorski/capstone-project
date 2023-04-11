@@ -2,23 +2,23 @@ import { render, screen } from "@testing-library/react";
 import DogProfile from "./DogProfile";
 
 const dogInfo = {
-  name: "Lore",
+  dogName: "Lore",
   age: "4 Jahre",
   sex: "female",
-  excluded: "unkastrierte Rüden",
+  excluded: [{ id: 1, criteria: "unkastrierte Rüden" }],
   castrated: true,
   inHeat: false,
-  owner: "Luise Schröder",
+  ownerName: "Luise Schröder",
 };
 
 const dogInfoNotCastratedAndInHeat = {
-  name: "Lore",
+  dogName: "Lore",
   age: "4 Jahre",
   sex: "female",
-  excluded: "unkastrierte Rüden",
+  excluded: [{ id: 1, criteria: "unkastrierte Rüden" }],
   castrated: false,
   inHeat: true,
-  owner: "Luise Schröder",
+  ownerName: "Luise Schröder",
 };
 
 test("renders all elements", () => {

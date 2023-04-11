@@ -123,3 +123,51 @@ export function transformExclusionCriteriaToString(data) {
 
   return excluded;
 }
+
+export function transformDogProfileFormDataToDogProfileData(data) {
+  data.castrated === "castrated"
+    ? (data.castrated = true)
+    : (data.castrated = false);
+  const birthyearNumber = parseInt(data.birthyear);
+  const age = 2023 - birthyearNumber;
+  const excludedArray = transformExclusionCriteriaToArray(data);
+  delete data.birthyear;
+  return {
+    ...data,
+    age: age,
+    excluded: excludedArray,
+  };
+}
+
+export function transformExclusionCriteriaToArray(data) {
+  let excludedArray = [];
+
+  if (data.unkastrierterueden === "on") {
+    excludedArray.push({ id: uid(), criteria: "unkastrierten Rüden" });
+    delete data.unkastrierterueden;
+  }
+
+  if (data.kastrierterueden === "on") {
+    excludedArray.push({ id: uid(), criteria: "kastrierten Rüden" });
+    delete data.kastrierterueden;
+  }
+
+  if (data.kastriertehuendinnen === "on") {
+    excludedArray.push({ id: uid(), criteria: "kastrierten Hündinnen" });
+    delete data.kastriertehuendinnen;
+  }
+  if (data.unkastriertehuendinnen === "on") {
+    excludedArray.push({ id: uid(), criteria: "unkastrierten Hündinnen" });
+    delete data.unkastriertehuendinnen;
+  }
+  if (data.laeufigehuendinnen === "on") {
+    excludedArray.push({ id: uid(), criteria: "läufigen Hündinnen" });
+    delete data.laeufigehuendinnen;
+  }
+  if (data.welpen === "on") {
+    excludedArray.push({ id: uid(), criteria: "Welpen" });
+    delete data.welpen;
+  }
+
+  return excludedArray;
+}

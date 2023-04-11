@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import Header from "../components/Header/Header";
 import MeetingList from "../components/MeetingList/MeetingList";
-import AddMeetingButton from "../components/AddMeetingButton/AddMeetingButton";
+import AddButton from "../components/AddButton/AddButton";
 import NavBar from "../components/NavBar/NavBar";
 
 export default function Home() {
   return (
     <StyledMain>
       <Header />
-      <AddMeetingButton />
+      <AddButton text="NEUES DATE" href="/meetings/new-meeting" />
       <MeetingList />
       <NavBar />
     </StyledMain>

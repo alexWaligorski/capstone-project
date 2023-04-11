@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Image from "next/image";
 
 export default function DogProfile({ dogData }) {
-  const { name, age, excluded, sex, inHeat, owner, castrated } = dogData;
+  const { dogName, age, excluded, sex, inHeat, ownerName, castrated } = dogData;
   return (
     <StyledArticle>
       <StyledProfileIcon
@@ -11,7 +11,7 @@ export default function DogProfile({ dogData }) {
         width={80}
         height={80}
       />
-      <h2>{name}</h2>
+      <h2>{dogName}</h2>
       <StyledInfoDetail>
         <StyledLabel>Geschlecht:</StyledLabel>
         <StyledGenderSection>
@@ -25,15 +25,17 @@ export default function DogProfile({ dogData }) {
           {inHeat && <p>läufig</p>}
         </StyledGenderSection>
         <StyledLabel>Alter: </StyledLabel>
-        <p>{age}</p>
+        <p>{age > 1 ? `${age} Jahre` : `1 Jahr oder jünger`}</p>
 
         <StyledLabel>Keine DogDates mit:</StyledLabel>
         <ul>
-          <li>{excluded}</li>
+          {excluded.map(({ id, criteria }) => (
+            <li key={id}>{criteria}</li>
+          ))}
         </ul>
 
         <StyledLabel>Mein Mensch:</StyledLabel>
-        <p>{owner}</p>
+        <p>{ownerName}</p>
       </StyledInfoDetail>
     </StyledArticle>
   );
@@ -44,8 +46,6 @@ const StyledArticle = styled.article`
   flex-direction: column;
   align-items: center;
   width: 90%;
-  margin-top: 12vh;
-  margin-left: 5vw;
   border: 2px solid black;
   border-radius: 20px;
   padding: 0.8rem;

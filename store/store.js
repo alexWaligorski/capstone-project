@@ -46,3 +46,14 @@ export const useMeetingStore = create((set) => ({
       })
     ),
 }));
+
+export const useDogProfileStore = create((set) => ({
+  dogProfiles: [],
+
+  createDogProfile: (newDogProfile) =>
+    set(
+      produce((draft) => {
+        draft.dogProfiles.push(newDogProfile);
+      })
+    ),
+}));
