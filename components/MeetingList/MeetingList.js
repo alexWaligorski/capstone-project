@@ -2,9 +2,19 @@ import styled from "styled-components";
 import Link from "next/link";
 import MeetingEntry from "../MeetingEntry/MeetingEntry";
 import { useMeetingStore } from "../../store/store";
+import { useState, useEffect } from "react";
 
 export default function MeetingList() {
   const meetings = useMeetingStore((state) => state.meetings);
+
+  const [hasMounted, setHasMounted] = useState(false);
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) {
+    return null;
+  }
 
   return (
     <>
