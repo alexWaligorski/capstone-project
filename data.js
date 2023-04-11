@@ -37,11 +37,14 @@ export const data = [
 ];
 
 export const dogInfo = {
-  name: "Lore",
+  dogName: "Lore",
   age: "4 Jahre",
   sex: "female",
-  excluded: "unkastrierte Rüden",
+  excluded: [
+    { id: 12, criteria: "unkastrierte Rüden" },
+    { id: 34, criteria: "Welpen" },
+  ],
   castrated: false,
   inHeat: true,
-  owner: "Luise Schröder",
+  ownerName: "Luise Schröder",
 };
