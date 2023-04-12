@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function DogProfile({ dogData }) {
   const { dogName, age, excluded, sex, inHeat, ownerName, castrated } = dogData;
@@ -37,6 +38,15 @@ export default function DogProfile({ dogData }) {
         <StyledLabel>Mein Mensch:</StyledLabel>
         <p>{ownerName}</p>
       </StyledInfoDetail>
+      <StyledLink href={`/profile/edit`}>
+        <StyledIcon
+          src="/edit-icon.svg"
+          alt="stift icon"
+          width={20}
+          height={20}
+        />
+        bearbeiten
+      </StyledLink>
     </StyledArticle>
   );
 }
@@ -80,4 +90,24 @@ const StyledLabel = styled.label`
   color: var(--orange);
   font-size: 12px;
   margin-top: 1rem;
+`;
+
+const StyledLink = styled(Link)`
+  display: inline-block;
+  line-height: 1rem;
+  font-size: 14px;
+  width: 9rem;
+  padding: 0.5rem 1rem 0.7rem 0.5rem;
+  text-align: center;
+  color: var(--white);
+  background-color: var(--orange);
+  border-radius: 10px;
+  text-decoration: none;
+`;
+
+const StyledIcon = styled(Image)`
+  position: relative;
+  top: 5px;
+  left: 5px;
+  margin-right: 1rem;
 `;

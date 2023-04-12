@@ -53,28 +53,55 @@ export function transformAttendingToString(attending) {
 }
 
 export function transformExcludedToCheckboxValue(excluded) {
-  const excludedArray = excluded.split(", ");
+  let excludedArray = [];
   let excludedObject = {};
-  excludedArray.map((entry) => {
-    if (entry === "Welpen") {
-      excludedObject.welpen = true;
-    }
-    if (entry === "unkastrierte Rüden") {
-      excludedObject.unkastrierterueden = true;
-    }
-    if (entry === "kastrierte Rüden") {
-      excludedObject.kastrierterueden = true;
-    }
-    if (entry === "unkastrierte Hündinnen") {
-      excludedObject.unkastriertehuendinnen = true;
-    }
-    if (entry === "kastrierte Hündinnen") {
-      excludedObject.kastriertehuendinnen = true;
-    }
-    if (entry === "läufige Hündinnen") {
-      excludedObject.laeufigehuendinnen = true;
-    }
-  });
+
+  if (typeof excluded === "string") {
+    excludedArray = excluded.split(", ");
+
+    excludedArray.map((entry) => {
+      if (entry === "Welpen") {
+        excludedObject.welpen = true;
+      }
+      if (entry === "unkastrierte Rüden") {
+        excludedObject.unkastrierterueden = true;
+      }
+      if (entry === "kastrierte Rüden") {
+        excludedObject.kastrierterueden = true;
+      }
+      if (entry === "unkastrierte Hündinnen") {
+        excludedObject.unkastriertehuendinnen = true;
+      }
+      if (entry === "kastrierte Hündinnen") {
+        excludedObject.kastriertehuendinnen = true;
+      }
+      if (entry === "läufige Hündinnen") {
+        excludedObject.laeufigehuendinnen = true;
+      }
+    });
+  } else if (Array.isArray(excluded)) {
+    excludedArray = excluded;
+    excludedArray.map((entry) => {
+      if (entry.criteria === "Welpen") {
+        excludedObject.welpen = true;
+      }
+      if (entry.criteria === "unkastrierten Rüden") {
+        excludedObject.unkastrierterueden = true;
+      }
+      if (entry.criteria === "kastrierten Rüden") {
+        excludedObject.kastrierterueden = true;
+      }
+      if (entry.criteria === "unkastrierten Hündinnen") {
+        excludedObject.unkastriertehuendinnen = true;
+      }
+      if (entry.criteria === "kastrierten Hündinnen") {
+        excludedObject.kastriertehuendinnen = true;
+      }
+      if (entry.criteria === "läufigen Hündinnen") {
+        excludedObject.laeufigehuendinnen = true;
+      }
+    });
+  }
 
   return excludedObject;
 }
@@ -128,6 +155,7 @@ export function transformDogProfileFormDataToDogProfileData(data) {
   data.castrated === "castrated"
     ? (data.castrated = true)
     : (data.castrated = false);
+  data.inHeat === "laeufig" ? (data.inHeat = true) : (data.inHeat = false);
   const birthyearNumber = parseInt(data.birthyear);
   const age = 2023 - birthyearNumber;
   const excludedArray = transformExclusionCriteriaToArray(data);
@@ -136,6 +164,15 @@ export function transformDogProfileFormDataToDogProfileData(data) {
     ...data,
     age: age,
     excluded: excludedArray,
+  };
+}
+
+export function transformDogProfileDataToDogProfileFormData(data) {
+  const transformedExcluded = transformExcludedToCheckboxValue(data.excluded);
+
+  return {
+    ...data,
+    ...transformedExcluded,
   };
 }
 
