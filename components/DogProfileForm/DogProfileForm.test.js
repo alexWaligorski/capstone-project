@@ -72,3 +72,95 @@ test("submitting the form with correct data", async () => {
     welpen: "on",
   });
 });
+
+const defaultDogData = {
+  dogName: "Nala",
+  ownerName: "John",
+  sex: "female",
+  castrated: false,
+  inHeat: true,
+  age: 3,
+  unkastrierterueden: true,
+  kastrierterueden: true,
+  unkastriertehuendinnen: true,
+  kastriertehuendinnen: true,
+  laeufigehuendinnen: true,
+  welpen: true,
+};
+
+test("renders form with correct default values", async () => {
+  const handleSubmit = jest.fn();
+  const formTitle = "Dog Profile Form";
+  const description = "Please fill in the details below:";
+  render(
+    <DogProfileForm
+      onSubmit={handleSubmit}
+      formTitle={formTitle}
+      description={description}
+      defaultDogData={defaultDogData}
+    />
+  );
+
+  // Verify form title and description are displayed correctly
+  const formTitleElement = screen.getByRole("heading", { name: formTitle });
+  const descriptionElement = screen.getByText(description);
+  expect(formTitleElement).toHaveTextContent("Dog Profile Form");
+  expect(descriptionElement).toHaveTextContent(
+    "Please fill in the details below:"
+  );
+
+  // Verify form inputs have correct default values
+  const dogNameInputElement = screen.getByLabelText("Name des Hundes:");
+  expect(dogNameInputElement).toHaveValue(defaultDogData.dogName);
+
+  const ownerNameInputElement = screen.getByLabelText("Besitzer:in:");
+  expect(ownerNameInputElement).toHaveValue(defaultDogData.ownerName);
+
+  const ageInputElement = screen.getByLabelText("Geburtsjahr des Hundes:");
+  expect(ageInputElement).toHaveValue(
+    new Date().getFullYear() - defaultDogData.age
+  );
+
+  const femaleRadioButtonElement = screen.getByLabelText("Hündin");
+  const maleRadioButtonElement = screen.getByLabelText("Rüde");
+  expect(femaleRadioButtonElement).toBeChecked();
+  expect(maleRadioButtonElement).not.toBeChecked();
+
+  const inHeatRadio = screen.queryByLabelText("Ja", {
+    selector: 'input[value="laeufig"]',
+  });
+  if (inHeatRadio) {
+    expect(inHeatRadio).toBeChecked();
+  }
+
+  const notInHeatRadio = screen.queryByLabelText("Nein", {
+    selector: 'input[value="nichtlaeufig"]',
+  });
+  if (notInHeatRadio) {
+    expect(notInHeatRadio).not.toBeChecked();
+  }
+
+  const castratedRadio = screen.getByLabelText("Ja", {
+    selector: 'input[id="kastriert"]',
+  });
+  const notCastratedRadio = screen.getByLabelText("Nein", {
+    selector: 'input[id="unkastriert"]',
+  });
+
+  expect(castratedRadio).not.toBeChecked();
+  expect(notCastratedRadio).toBeChecked();
+
+  const uncastratedMale = screen.getByLabelText("unkastrierte Rüden");
+  const castratedMale = screen.getByLabelText("kastrierte Rüden");
+  const uncastratedFemale = screen.getByLabelText("unkastrierte Hündinnen");
+  const castratedFemale = screen.getByLabelText("kastrierte Hündinnen");
+  const femaleInHeat = screen.getByLabelText("läufige Hündinnen");
+  const puppy = screen.getByLabelText("Welpen");
+
+  expect(uncastratedMale).toBeChecked();
+  expect(castratedMale).toBeChecked();
+  expect(uncastratedFemale).toBeChecked();
+  expect(castratedFemale).toBeChecked();
+  expect(femaleInHeat).toBeChecked();
+  expect(puppy).toBeChecked();
+});
