@@ -63,7 +63,7 @@ export const useDogProfileStore = create(
       upsertDogProfile: (newDogProfile) =>
         set(
           produce((draft) => {
-            draft.length
+            draft.dogProfiles.length
               ? (draft.dogProfiles[0] = newDogProfile)
               : draft.dogProfiles.push(newDogProfile);
           })
