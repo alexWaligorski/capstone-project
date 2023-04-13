@@ -9,14 +9,18 @@ import { useDogProfileStore } from "../../store/store";
 import { useRouter } from "next/router";
 
 export default function EditProfilePage({ onSubmit }) {
+  const router = useRouter();
   const addOrUpdateDogProfile = useDogProfileStore(
     (state) => state.upsertDogProfile
   );
   const dogProfiles = useDogProfileStore((state) => state.dogProfiles);
-  const currentDog = dogProfiles[0];
-  const currentDogFormData =
-    transformDogProfileDataToDogProfileFormData(currentDog);
-  const router = useRouter();
+  let currentDogFormData;
+
+  if (dogProfiles.length) {
+    const currentDog = dogProfiles[0];
+    currentDogFormData =
+      transformDogProfileDataToDogProfileFormData(currentDog);
+  }
 
   function handleSubmit(data) {
     const dogProfileData = transformDogProfileFormDataToDogProfileData(data);
