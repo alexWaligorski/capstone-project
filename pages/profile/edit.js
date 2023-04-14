@@ -36,7 +36,7 @@ export default function EditProfilePage({ onSubmit }) {
       <Header />
       <DogProfileForm
         onSubmit={handleSubmit}
-        defaultDogData={currentDogFormData ? currentDogFormData : null}
+        defaultDogData={currentDogFormData && currentDogFormData}
         formTitle="Leg ein Hundeprofil an!"
         description="Mit deinem Hundeprofil kannst du wichtige Informationen über deinen Hund mit Teilnehmenden deiner DogDates teilen."
       />
