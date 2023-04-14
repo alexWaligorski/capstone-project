@@ -1,6 +1,12 @@
 import { render, screen } from "@testing-library/react";
 import DogProfile from "./DogProfile";
 
+jest.mock("next/router", () => ({
+  useRouter: jest.fn().mockReturnValue({
+    isReady: true,
+  }),
+}));
+
 const dogInfo = {
   dogName: "Lore",
   age: "4 Jahre",
