@@ -1,9 +1,25 @@
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
+import ButtonWithIcon from "../ButtonWithIcon/ButtonWithIcon";
+import { useDogProfileStore } from "../../store/store";
+import { useRouter } from "next/router";
 
 export default function DogProfile({ dogData }) {
+  const deleteProfile = useDogProfileStore((state) => state.deleteDogProfile);
   const { dogName, age, excluded, sex, inHeat, ownerName, castrated } = dogData;
+
+  const router = useRouter();
+
+  if (!router.isReady || !dogData) {
+    return <h1>loading</h1>;
+  }
+
+  function handleDelete() {
+    deleteProfile();
+    router.push("/profile");
+  }
+
   return (
     <StyledArticle>
       <StyledProfileIcon
@@ -38,15 +54,26 @@ export default function DogProfile({ dogData }) {
         <StyledLabel>Mein Mensch:</StyledLabel>
         <p>{ownerName}</p>
       </StyledInfoDetail>
-      <StyledLink href={`/profile/edit`}>
-        <StyledIcon
-          src="/edit-icon.svg"
-          alt="stift icon"
-          width={20}
-          height={20}
+      <StyledButtonWrapper>
+        <ButtonWithIcon
+          type="button"
+          functionality="delete"
+          text="löschen"
+          source="/delete-icon.svg"
+          alt="Kreuz Icon"
+          label="Klicken zum löschen"
+          handleClick={handleDelete}
         />
-        bearbeiten
-      </StyledLink>
+        <StyledLink href={`/profile/edit`}>
+          <StyledIcon
+            src="/edit-icon.svg"
+            alt="stift icon"
+            width={20}
+            height={20}
+          />
+          bearbeiten
+        </StyledLink>
+      </StyledButtonWrapper>
     </StyledArticle>
   );
 }
@@ -110,4 +137,13 @@ const StyledIcon = styled(Image)`
   top: 5px;
   left: 5px;
   margin-right: 1rem;
+`;
+
+const StyledButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
 `;

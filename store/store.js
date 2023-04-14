@@ -68,6 +68,13 @@ export const useDogProfileStore = create(
               : draft.dogProfiles.push(newDogProfile);
           })
         ),
+
+      deleteDogProfile: () =>
+        set(
+          produce((draft) => {
+            draft.dogProfiles.splice(0);
+          })
+        ),
     }),
     {
       name: "dog-profile-store",
