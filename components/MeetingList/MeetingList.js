@@ -20,7 +20,7 @@ export default function MeetingList() {
     <>
       <StyledHeading>Geplante Dates</StyledHeading>
       {meetings.length !== 0 ? (
-        <ul>
+        <StyledList>
           {meetings.map((meeting) => (
             <StyledListItem key={meeting.id}>
               <StyledEntry href={`/meetings/${meeting.id}`}>
@@ -28,7 +28,7 @@ export default function MeetingList() {
               </StyledEntry>
             </StyledListItem>
           ))}
-        </ul>
+        </StyledList>
       ) : (
         <h3>Noch keine geplanten Dates!</h3>
       )}
@@ -55,4 +55,8 @@ const StyledListItem = styled.li`
 
 const StyledHeading = styled.h2`
   color: var(--white);
+`;
+
+const StyledList = styled.ul`
+  margin-bottom: 5rem;
 `;

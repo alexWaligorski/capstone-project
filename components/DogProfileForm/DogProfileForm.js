@@ -2,9 +2,20 @@ import styled from "styled-components";
 import ButtonWithIcon from "../ButtonWithIcon/ButtonWithIcon";
 import { useState } from "react";
 
-export default function DogProfileForm({ onSubmit, formTitle, description }) {
-  const [isFemale, setIsFemale] = useState(false);
-  const [isCastrated, setIsCastrated] = useState(true);
+export default function DogProfileForm({
+  onSubmit,
+  formTitle,
+  description,
+  defaultDogData,
+}) {
+  const [isFemale, setIsFemale] = useState(
+    defaultDogData?.sex === "female" || false
+  );
+  const [isCastrated, setIsCastrated] = useState(
+    defaultDogData?.castrated || false
+  );
+
+  const [isInHeat, setIsInHeat] = useState(defaultDogData?.inHeat || false);
 
   function handleSexChange(value) {
     value === "female" ? setIsFemale(true) : setIsFemale(false);
@@ -12,6 +23,10 @@ export default function DogProfileForm({ onSubmit, formTitle, description }) {
 
   function handleCastrationChange(value) {
     value === "castrated" ? setIsCastrated(true) : setIsCastrated(false);
+  }
+
+  function handleInHeatChange(value) {
+    value === "laeufig" ? setIsInHeat(true) : setIsInHeat(false);
   }
 
   function getCurrentYear() {
@@ -36,13 +51,21 @@ export default function DogProfileForm({ onSubmit, formTitle, description }) {
       </h2>
       <p name="description"> {description} </p>
       <label htmlFor="dogName">Name des Hundes:</label>
-      <input type="text" name="dogName" id="dogName" maxLength="50" required />
+      <input
+        type="text"
+        name="dogName"
+        id="dogName"
+        maxLength="50"
+        defaultValue={defaultDogData?.dogName}
+        required
+      />
       <label htmlFor="ownerName">Besitzer:in:</label>
       <input
         type="text"
         name="ownerName"
         id="ownerName"
         maxLength="100"
+        defaultValue={defaultDogData?.ownerName}
         required
       />
       <label htmlFor="birthyear">Geburtsjahr des Hundes:</label>
@@ -53,7 +76,9 @@ export default function DogProfileForm({ onSubmit, formTitle, description }) {
         min="2003"
         max={getCurrentYear()}
         step="1"
-        defaultValue="2010"
+        defaultValue={
+          defaultDogData ? getCurrentYear() - defaultDogData.age : 2010
+        }
         required
       />
       <StyledFieldset>
@@ -65,6 +90,7 @@ export default function DogProfileForm({ onSubmit, formTitle, description }) {
             name="sex"
             id="huendin"
             value="female"
+            checked={isFemale}
             required
           />
           <StyledCheckboxLabel htmlFor="huendin">Hündin</StyledCheckboxLabel>
@@ -76,6 +102,7 @@ export default function DogProfileForm({ onSubmit, formTitle, description }) {
             name="sex"
             id="ruede"
             value="male"
+            checked={!isFemale}
             required
           />
           <StyledCheckboxLabel htmlFor="ruede">Rüde</StyledCheckboxLabel>
@@ -89,6 +116,7 @@ export default function DogProfileForm({ onSubmit, formTitle, description }) {
             name="castrated"
             id="kastriert"
             value="castrated"
+            checked={isCastrated}
             onChange={(event) => handleCastrationChange(event.target.value)}
             required
           />
@@ -100,6 +128,7 @@ export default function DogProfileForm({ onSubmit, formTitle, description }) {
             name="castrated"
             id="unkastriert"
             value="notCastrated"
+            checked={!isCastrated}
             onChange={(event) => handleCastrationChange(event.target.value)}
             required
           />
@@ -110,7 +139,14 @@ export default function DogProfileForm({ onSubmit, formTitle, description }) {
         <StyledFieldset>
           <legend>Ist deine Hündin läufig?</legend>
           <span>
-            <input type="radio" name="inHeat" id="laeufig" value="laeufig" />
+            <input
+              type="radio"
+              name="inHeat"
+              id="laeufig"
+              value="laeufig"
+              onChange={(event) => handleInHeatChange(event.target.value)}
+              checked={isInHeat}
+            />
             <StyledCheckboxLabel htmlFor="laeufig">Ja</StyledCheckboxLabel>
           </span>
           <span>
@@ -119,6 +155,8 @@ export default function DogProfileForm({ onSubmit, formTitle, description }) {
               name="inHeat"
               id="nichtlaeufig"
               value="nichtlaeufig"
+              onChange={(event) => handleInHeatChange(event.target.value)}
+              checked={!isInHeat}
             />
             <StyledCheckboxLabel htmlFor="nichtlaeufig">
               Nein
@@ -133,6 +171,7 @@ export default function DogProfileForm({ onSubmit, formTitle, description }) {
             type="checkbox"
             name="unkastrierterueden"
             id="unkastrierterueden"
+            defaultChecked={defaultDogData?.unkastrierterueden}
           />
           <StyledCheckboxLabel htmlFor="unkastrierterueden">
             unkastrierte Rüden
@@ -143,6 +182,7 @@ export default function DogProfileForm({ onSubmit, formTitle, description }) {
             type="checkbox"
             name="kastrierterueden"
             id="kastrierterueden"
+            defaultChecked={defaultDogData?.kastrierterueden}
           />
           <StyledCheckboxLabel htmlFor="kastrierterueden">
             kastrierte Rüden
@@ -153,6 +193,7 @@ export default function DogProfileForm({ onSubmit, formTitle, description }) {
             type="checkbox"
             name="unkastriertehuendinnen"
             id="unkastriertehuendinnen"
+            defaultChecked={defaultDogData?.unkastriertehuendinnen}
           />
           <StyledCheckboxLabel htmlFor="unkastriertehuendinnen">
             unkastrierte Hündinnen
@@ -163,6 +204,7 @@ export default function DogProfileForm({ onSubmit, formTitle, description }) {
             type="checkbox"
             name="kastriertehuendinnen"
             id="kastriertehuendinnen"
+            defaultChecked={defaultDogData?.kastriertehuendinnen}
           />
           <StyledCheckboxLabel htmlFor="kastriertehuendinnen">
             kastrierte Hündinnen
@@ -173,13 +215,19 @@ export default function DogProfileForm({ onSubmit, formTitle, description }) {
             type="checkbox"
             name="laeufigehuendinnen"
             id="laeufigehuendinnen"
+            defaultChecked={defaultDogData?.laeufigehuendinnen}
           />
           <StyledCheckboxLabel htmlFor="laeufigehuendinnen">
             läufige Hündinnen
           </StyledCheckboxLabel>
         </span>
         <span>
-          <input type="checkbox" name="welpen" id="welpen" />
+          <input
+            type="checkbox"
+            name="welpen"
+            id="welpen"
+            defaultChecked={defaultDogData?.welpen}
+          />
           <StyledCheckboxLabel htmlFor="welpen">Welpen</StyledCheckboxLabel>
         </span>
       </StyledFieldset>

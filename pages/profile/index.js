@@ -7,13 +7,11 @@ import { useDogProfileStore } from "../../store/store";
 
 export default function ProfilePage() {
   const dogProfiles = useDogProfileStore((state) => state.dogProfiles);
-  const dogInfo = dogProfiles[0];
-  console.log("dogInfo", dogInfo);
   return (
     <StyledMain>
       <Header />
       {dogProfiles.length ? (
-        <DogProfile dogData={dogInfo} />
+        <DogProfile dogData={dogProfiles[0]} />
       ) : (
         <AddButton text="NEUES PROFIL" href="/profile/edit" />
       )}

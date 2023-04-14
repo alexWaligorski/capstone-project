@@ -60,10 +60,12 @@ export const useDogProfileStore = create(
     (set) => ({
       dogProfiles: [],
 
-      createDogProfile: (newDogProfile) =>
+      upsertDogProfile: (newDogProfile) =>
         set(
           produce((draft) => {
-            draft.dogProfiles.push(newDogProfile);
+            draft.dogProfiles.length
+              ? (draft.dogProfiles[0] = newDogProfile)
+              : draft.dogProfiles.push(newDogProfile);
           })
         ),
     }),
