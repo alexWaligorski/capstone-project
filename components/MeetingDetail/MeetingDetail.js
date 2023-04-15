@@ -6,6 +6,7 @@ import Image from "next/image";
 import ButtonWithIcon from "../ButtonWithIcon/ButtonWithIcon";
 import { useMeetingStore } from "../../store/store";
 import { useRouter } from "next/router";
+import Map from "../Map";
 
 export default function MeetingDetail({ data }) {
   const deleteMeeting = useMeetingStore((state) => state.deleteMeeting);
@@ -25,6 +26,7 @@ export default function MeetingDetail({ data }) {
   return (
     <StyledArticle>
       <StyledHeading>{location}</StyledHeading>
+      <Map />
       <ImageWithText
         image="/calendar-icon.svg"
         altText="Kalender Icon"
