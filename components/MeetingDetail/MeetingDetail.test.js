@@ -8,7 +8,7 @@ jest.mock("next/router", () => ({
 }));
 
 const allInfo = {
-  location: "Volkspark",
+  location: "Volkspark Altona",
   date: "12.04.23",
   time: "15:00",
   excluded: "unkastrierte Rüden",
@@ -17,7 +17,7 @@ const allInfo = {
 };
 
 const noOptionalInfo = {
-  location: "Volkspark",
+  location: "Volkspark Altona",
   date: "12.04.23",
   time: "15:00",
   excluded: "",
@@ -27,7 +27,7 @@ const noOptionalInfo = {
 
 test("renders given location from test data", () => {
   render(<MeetingDetail data={allInfo} />);
-  const location = screen.getByText("Volkspark");
+  const location = screen.getByText("Volkspark Altona");
   expect(location).toBeInTheDocument();
 });
 

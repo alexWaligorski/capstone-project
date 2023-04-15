@@ -5,14 +5,14 @@ import styled from "styled-components";
 
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
-export default function Map() {
+export default function Map({ position }) {
   return (
-    <StyledMap center={[53.583139, 9.89821]} zoom={12} scrollWheelZoom={false}>
+    <StyledMap center={position} zoom={12} scrollWheelZoom={false}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[53.583139, 9.89821]}>
+      <Marker position={position}>
         <Popup>
           A pretty CSS3 popup. <br /> Easily customizable.
         </Popup>

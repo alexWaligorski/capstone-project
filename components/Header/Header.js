@@ -25,6 +25,7 @@ const StyledHeader = styled.header`
   top: 0;
   background-color: var(--white);
   box-shadow: 0 3px 10px var(--stone);
+  z-index: 1;
 `;
 const Heading = styled.h1`
   margin-top: 0.8rem;

@@ -48,3 +48,56 @@ export const dogInfo = {
   inHeat: true,
   ownerName: "Luise Schröder",
 };
+
+const parkLocations = [
+  {
+    id: 101,
+    name: "Volkspark Altona",
+    position: [53.583139, 9.89821],
+  },
+  {
+    id: 102,
+    name: "Fischerspark",
+    position: [53.5472686, 9.9180091],
+  },
+  {
+    id: 103,
+    name: "Jenischpark",
+    position: [53.5518873, 9.8656488],
+  },
+  {
+    id: 104,
+    name: "Niendorfer Gehege",
+    position: [53.6143235, 9.8994927],
+  },
+  {
+    id: 105,
+    name: "Planten und Blomen",
+    position: [53.5606699, 9.9821389],
+  },
+  {
+    id: 106,
+    name: "Falkensteiner Ufer",
+    position: [53.5606699, 9.9821389],
+  },
+  {
+    id: 107,
+    name: "Klövensteen",
+    position: [53.5623746, 9.7339207],
+  },
+  {
+    id: 108,
+    name: "Elbstrand Övelgönne",
+    position: [53.5447151, 9.9038221],
+  },
+  {
+    id: 109,
+    name: "Wohlerspark",
+    position: [53.5579225, 9.9481185],
+  },
+  {
+    id: 120,
+    name: "Schanzenpark",
+    position: [53.5653866, 9.9672976],
+  },
+];
