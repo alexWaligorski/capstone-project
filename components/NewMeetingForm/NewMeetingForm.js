@@ -61,6 +61,7 @@ export default function NewMeetingForm({
         type="text"
         name="attending"
         id="attending"
+        placeholder="Rex, Struppi, Nala..."
         defaultValue={defaultData?.attending}
         required
       />

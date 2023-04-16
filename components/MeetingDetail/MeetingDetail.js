@@ -19,10 +19,12 @@ export default function MeetingDetail({ data }) {
 
   const { location, date, time, excluded, furtherInfo, attending, id } = data;
   let position = [];
+  let address = "";
 
   if (parks.length) {
     const currentPark = parks.find((park) => park.name === location);
     position = currentPark.position;
+    address = currentPark.address;
   }
 
   function handleDelete() {
@@ -33,7 +35,10 @@ export default function MeetingDetail({ data }) {
   return (
     <StyledArticle>
       <StyledHeading>{location}</StyledHeading>
-      <Map position={position.length && position} />
+      <Map
+        position={position.length && position}
+        address={address ? address : "Keine Addresse hinterlegt"}
+      />
       <ImageWithText
         image="/calendar-icon.svg"
         altText="Kalender Icon"
@@ -85,7 +90,7 @@ export default function MeetingDetail({ data }) {
 const StyledArticle = styled.article`
   display: flex;
   position: relative;
-  z-index: -1;
+  z-index: 1;
   flex-direction: column;
   align-items: center;
   width: 90%;
