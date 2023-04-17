@@ -2,11 +2,11 @@ import NewMeetingForm from "./NewMeetingForm";
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import selectEvent from "react-select-event";
 import { useRouter } from "next/router";
 
 const defaultData = {
   id: "0",
-  location: "Volkspark",
   date: "2023-04-14",
   time: "15:00",
   furtherInfo: "Nur bei gutem Wetter!",
@@ -60,8 +60,7 @@ test("submits edited form data when fields are altered", async () => {
   const welpen = screen.getByLabelText("Welpen");
   const submitButton = screen.getByRole("button");
 
-  await user.clear(location);
-  await user.type(location, "Elbstrand");
+  await selectEvent.select(location, "Volkspark Altona");
   await user.clear(attending);
   await user.type(attending, "Fiete, Lore");
   await user.click(date, { target: { value: "2020-05-24" } });
@@ -77,7 +76,7 @@ test("submits edited form data when fields are altered", async () => {
 
   expect(onSubmit).toHaveBeenCalledWith({
     id: "0",
-    location: "Elbstrand",
+    location: "Volkspark Altona",
     date: "2023-04-14",
     time: "15:00",
     furtherInfo: "Nur bei gutem Wetter!",

@@ -4,11 +4,13 @@ import DogList from "../DogList/DogList";
 import Link from "next/link";
 import Image from "next/image";
 import ButtonWithIcon from "../ButtonWithIcon/ButtonWithIcon";
-import { useMeetingStore } from "../../store/store";
+import { useMeetingStore, useParkLocationsStore } from "../../store/store";
 import { useRouter } from "next/router";
+import Map from "../Map";
 
 export default function MeetingDetail({ data }) {
   const deleteMeeting = useMeetingStore((state) => state.deleteMeeting);
+  const parks = useParkLocationsStore((state) => state.parkLocations);
   const router = useRouter();
 
   if (!router.isReady || !data) {
@@ -16,6 +18,14 @@ export default function MeetingDetail({ data }) {
   }
 
   const { location, date, time, excluded, furtherInfo, attending, id } = data;
+  let position = [];
+  let address = "";
+
+  if (parks.length) {
+    const currentPark = parks.find((park) => park.name === location);
+    position = currentPark.position;
+    address = currentPark.address;
+  }
 
   function handleDelete() {
     deleteMeeting(id);
@@ -25,6 +35,10 @@ export default function MeetingDetail({ data }) {
   return (
     <StyledArticle>
       <StyledHeading>{location}</StyledHeading>
+      <Map
+        position={position.length && position}
+        address={address ? address : "Keine Addresse hinterlegt"}
+      />
       <ImageWithText
         image="/calendar-icon.svg"
         altText="Kalender Icon"
@@ -75,6 +89,8 @@ export default function MeetingDetail({ data }) {
 
 const StyledArticle = styled.article`
   display: flex;
+  position: relative;
+  z-index: 1;
   flex-direction: column;
   align-items: center;
   width: 90%;

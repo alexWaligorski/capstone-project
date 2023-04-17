@@ -32,6 +32,7 @@ const StyledNav = styled.nav`
   align-items: center;
   background-color: var(--white);
   border-top: 0.5px solid black;
+  z-index: 5;
 `;
 
 const StyledNavItem = styled(Link)`

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ButtonWithIcon from "../ButtonWithIcon/ButtonWithIcon";
+import { useParkLocationsStore } from "../../store/store";
 
 export default function NewMeetingForm({
   onSubmit,
@@ -7,6 +8,8 @@ export default function NewMeetingForm({
   defaultData,
   description,
 }) {
+  const parks = useParkLocationsStore((state) => state.parkLocations);
+
   return (
     <StyledForm
       onSubmit={(event) => {
@@ -30,14 +33,13 @@ export default function NewMeetingForm({
       </h2>
       <p name="description"> {description} </p>
       <label htmlFor="location">Ort:</label>
-      <input
-        type="text"
-        name="location"
-        id="location"
-        maxLength="50"
-        defaultValue={defaultData?.location}
-        required
-      />
+      <select name="location" id="location">
+        {parks.map((park) => (
+          <option key={park.id} value={park.name}>
+            {park.name}
+          </option>
+        ))}
+      </select>
       <label htmlFor="date">Datum:</label>
       <input
         type="date"
@@ -59,6 +61,7 @@ export default function NewMeetingForm({
         type="text"
         name="attending"
         id="attending"
+        placeholder="Rex, Struppi, Nala..."
         defaultValue={defaultData?.attending}
         required
       />
