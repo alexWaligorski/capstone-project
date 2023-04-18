@@ -4,28 +4,30 @@ import DogList from "../DogList/DogList";
 import Link from "next/link";
 import Image from "next/image";
 import ButtonWithIcon from "../ButtonWithIcon/ButtonWithIcon";
-import { useMeetingStore, useParkLocationsStore } from "../../store/store";
+import { useMeetingStore } from "../../store/store";
 import { useRouter } from "next/router";
 import Map from "../Map";
 
 export default function MeetingDetail({ data }) {
   const deleteMeeting = useMeetingStore((state) => state.deleteMeeting);
-  const parks = useParkLocationsStore((state) => state.parkLocations);
   const router = useRouter();
 
   if (!router.isReady || !data) {
     return <h1>loading</h1>;
   }
 
-  const { location, date, time, excluded, furtherInfo, attending, id } = data;
-  let position = [];
-  let address = "";
-
-  if (parks.length) {
-    const currentPark = parks.find((park) => park.name === location);
-    position = currentPark.position;
-    address = currentPark.address;
-  }
+  const {
+    location,
+    date,
+    time,
+    excluded,
+    furtherInfo,
+    attending,
+    id,
+    lat,
+    long,
+    address,
+  } = data;
 
   function handleDelete() {
     deleteMeeting(id);
@@ -36,7 +38,8 @@ export default function MeetingDetail({ data }) {
     <StyledArticle>
       <StyledHeading>{location}</StyledHeading>
       <Map
-        position={position.length && position}
+        lat={lat && lat}
+        long={long && long}
         address={address ? address : "Keine Addresse hinterlegt"}
       />
       <ImageWithText

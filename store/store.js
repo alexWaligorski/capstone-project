@@ -87,16 +87,16 @@ export const useParkLocationsStore = create((set) => ({
     {
       id: 101,
       name: "Volkspark Altona",
-      position: [53.5831092, 9.8959561],
+      position: { lat: "53.5831092", long: "9.8959561" },
       address: "August-Kirch-Straße 19, 22525 Hamburg",
     },
     {
       id: 102,
       name: "Fischerspark",
-      position: [53.5472686, 9.9180091],
+      position: { lat: "53.5472686", long: "9.9180091" },
       address: "Fischers Allee 24, 22763 Hamburg",
     },
-    {
+    /* {
       id: 103,
       name: "Jenischpark",
       position: [53.5518873, 9.8656488],
@@ -117,7 +117,7 @@ export const useParkLocationsStore = create((set) => ({
     {
       id: 106,
       name: "Falkensteiner Ufer",
-      position: [53.5623821, 9.7648204],
+      position: { lat: 53.5623821, long: 9.7648204 },
       address: "Falkensteiner Ufer, 22587 Hamburg",
     },
     {
@@ -125,8 +125,8 @@ export const useParkLocationsStore = create((set) => ({
       name: "Klövensteen",
       position: [53.5623746, 9.7339207],
       address: "Sandmoorweg 160, 22559 Hamburg",
-    },
-    {
+    }, */
+    /* {
       id: 108,
       name: "Elbstrand Övelgönne",
       position: [53.5447151, 9.9038221],
@@ -143,6 +143,6 @@ export const useParkLocationsStore = create((set) => ({
       name: "Schanzenpark",
       position: [53.5653866, 9.9672976],
       address: "Schröderstiftstraße, 20357 Hamburg",
-    },
+    }, */
   ],
 }));

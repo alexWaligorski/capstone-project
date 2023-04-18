@@ -7,8 +7,12 @@ export function transformMeetingDataToDefaultData(meetingData) {
     meetingData.excluded
   );
 
+  console.log("in utils", meetingData);
+
   return {
     ...meetingData,
+    lat: meetingData.lat.toString(),
+    long: meetingData.long.toString(),
     date: date,
     attending: attending,
     ...transformedExcluded,
@@ -23,6 +27,8 @@ export function transformFormDataToMeetingData(formData) {
 
   return {
     ...formData,
+    lat: parseFloat(formData.lat),
+    long: parseFloat(formData.long),
     id: formData.id ? formData.id : uid(),
     date: transformedDate,
     attending: attendingDogs,

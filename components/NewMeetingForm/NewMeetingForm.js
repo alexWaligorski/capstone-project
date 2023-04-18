@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import ButtonWithIcon from "../ButtonWithIcon/ButtonWithIcon";
-import { useParkLocationsStore } from "../../store/store";
+import LocationSelect from "../LocationSelect/LocationSelect";
 
 export default function NewMeetingForm({
   onSubmit,
@@ -8,14 +8,14 @@ export default function NewMeetingForm({
   defaultData,
   description,
 }) {
-  const parks = useParkLocationsStore((state) => state.parkLocations);
-
+  console.log("in Form", defaultData);
   return (
     <StyledForm
       onSubmit={(event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData);
+        console.log(data);
         onSubmit(data);
       }}
       aria-labelledby="formTitle"
@@ -32,14 +32,7 @@ export default function NewMeetingForm({
         {formTitle}
       </h2>
       <p name="description"> {description} </p>
-      <label htmlFor="location">Ort:</label>
-      <select name="location" id="location">
-        {parks.map((park) => (
-          <option key={park.id} value={park.name}>
-            {park.name}
-          </option>
-        ))}
-      </select>
+      <LocationSelect defaultData={defaultData ? defaultData : null} />
       <label htmlFor="date">Datum:</label>
       <input
         type="date"

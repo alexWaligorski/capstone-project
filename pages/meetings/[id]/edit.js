@@ -28,7 +28,7 @@ export default function EditMeetingPage({ onSubmit }) {
 
     router.push(`/meetings/${editedMeetingData.id}`);
   }
-
+  console.log("in edit", transformedMeeting);
   return (
     <>
       <Header />
