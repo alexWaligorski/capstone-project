@@ -14,6 +14,7 @@ export default function EditMeetingPage({ onSubmit }) {
     return <h1>loading</h1>;
   }
   const { id } = router.query;
+  console.log("id:", id);
   const requestedMeeting = meetings.find((meeting) => meeting.id === id);
 
   const transformedMeeting =

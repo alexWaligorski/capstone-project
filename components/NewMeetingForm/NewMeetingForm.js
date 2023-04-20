@@ -8,7 +8,6 @@ export default function NewMeetingForm({
   defaultData,
   description,
 }) {
-  console.log("in Form", defaultData);
   return (
     <StyledForm
       onSubmit={(event) => {
@@ -31,6 +30,7 @@ export default function NewMeetingForm({
       <h2 id="formTitle" name="formTitle">
         {formTitle}
       </h2>
+
       <p name="description"> {description} </p>
       <LocationSelect defaultData={defaultData ? defaultData : null} />
       <label htmlFor="date">Datum:</label>
@@ -168,3 +168,11 @@ const StyledFieldset = styled.fieldset`
 const StyledCheckboxLabel = styled.label`
   margin-left: 0.8rem;
 `;
+
+/* const StyledTitleSection = styled.section`
+  color: var(--orange);
+  background-color: var(--white);
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 4px;
+`; */
