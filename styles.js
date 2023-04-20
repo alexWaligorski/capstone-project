@@ -13,11 +13,12 @@ export default createGlobalStyle`
   --orange: #EB6734;
   --light-orange: #f9d2c2;
   --blue: #034A8A;
+  --skyblue: #ebf4fc;
   --brown: #914C27;
   --white: #ffffff;
   --black: #000000;
   --red: #DB1E13;
-  --stone: #333333;
+  --stone: #848687;
   *,
   *::before,
   *::after {

@@ -14,7 +14,6 @@ export default function NewMeetingForm({
         event.preventDefault();
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData);
-        console.log(data);
         onSubmit(data);
       }}
       aria-labelledby="formTitle"
@@ -31,7 +30,7 @@ export default function NewMeetingForm({
         {formTitle}
       </h2>
 
-      <p name="description"> {description} </p>
+      <StyledHelperText name="description"> {description} </StyledHelperText>
       <LocationSelect defaultData={defaultData ? defaultData : null} />
       <label htmlFor="date">Datum:</label>
       <input
@@ -167,6 +166,11 @@ const StyledFieldset = styled.fieldset`
 
 const StyledCheckboxLabel = styled.label`
   margin-left: 0.8rem;
+`;
+
+const StyledHelperText = styled.p`
+  fonst-size: 14px;
+  margin: 0rem 0rem 1rem;
 `;
 
 /* const StyledTitleSection = styled.section`

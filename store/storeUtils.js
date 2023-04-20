@@ -7,8 +7,6 @@ export function transformMeetingDataToDefaultData(meetingData) {
     meetingData.excluded
   );
 
-  console.log("in utils", meetingData);
-
   return {
     ...meetingData,
     lat: meetingData.lat.toString(),
