@@ -14,7 +14,6 @@ export default function NewMeetingForm({
         event.preventDefault();
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData);
-        console.log(data);
         onSubmit(data);
       }}
       aria-labelledby="formTitle"
