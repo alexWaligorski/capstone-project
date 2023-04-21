@@ -131,8 +131,10 @@ const StyledParagraph = styled.p`
 
 const StyledHeading = styled.h2`
   border: 3px solid var(--blue);
+  font-size: 18px;
   border-radius: 10px;
   padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
 `;
 
 const StyledSubHeading = styled.h3`

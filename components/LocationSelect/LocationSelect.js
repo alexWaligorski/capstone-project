@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 
@@ -15,6 +15,14 @@ export default function LocationSelect({ defaultData }) {
   const [locationSearch, setLocationSearch] = useState("");
 
   const [showSearch, setShowSearch] = useState(false);
+
+  const searchInputRef = useRef(null);
+
+  useEffect(() => {
+    if (showSearch && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [showSearch]);
 
   async function handleChange(event) {
     const query = event.target.value;
@@ -89,6 +97,7 @@ export default function LocationSelect({ defaultData }) {
             </StyledSuggestionHeading>
             <StyledSearchinput
               onChange={handleChange}
+              ref={searchInputRef}
               type="text"
               id="locationsearch"
               name="locationsearch"

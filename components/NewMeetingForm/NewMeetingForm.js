@@ -14,6 +14,7 @@ export default function NewMeetingForm({
         event.preventDefault();
         const formData = new FormData(event.target);
         const data = Object.fromEntries(formData);
+        console.log(data);
         onSubmit(data);
       }}
       aria-labelledby="formTitle"
@@ -172,11 +173,3 @@ const StyledHelperText = styled.p`
   fonst-size: 14px;
   margin: 0rem 0rem 1rem;
 `;
-
-/* const StyledTitleSection = styled.section`
-  color: var(--orange);
-  background-color: var(--white);
-  text-align: center;
-  padding: 0.5rem;
-  border-radius: 4px;
-`; */

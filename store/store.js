@@ -8,9 +8,12 @@ export const useMeetingStore = create(
       meetings: [
         {
           id: "5",
-          location: "Volkspark Altona",
+          location: "Jenischpark",
           date: "14.04.2023",
           time: "15:00",
+          address: "Jenischpark, Elbchaussee, 22605 Hamburg, Deutschland",
+          lat: "53.54801",
+          long: "9.86665",
           excluded: "unkastrierte Rüden, Welpen, läufige Hündinnen",
           furtherInfo: "Nur bei gutem Wetter!",
           attending: [
