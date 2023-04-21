@@ -40,7 +40,7 @@ export default function MeetingDetail({ data }) {
       <Map
         lat={lat && lat}
         long={long && long}
-        address={address ? address : "Keine Addresse hinterlegt"}
+        location={location && location}
       />
       <ImageWithText
         image="/calendar-icon.svg"
@@ -56,6 +56,10 @@ export default function MeetingDetail({ data }) {
           text={excluded}
         />
       )}
+      <StyledInfobox>
+        <StyledSubHeading>Adresse:</StyledSubHeading>
+        <StyledParagraph>{address}</StyledParagraph>
+      </StyledInfobox>
       {furtherInfo && (
         <StyledInfobox data-testid="info">
           <StyledSubHeading>Weitere Infos:</StyledSubHeading>
@@ -126,14 +130,16 @@ const StyledParagraph = styled.p`
 `;
 
 const StyledHeading = styled.h2`
-  border: 2px solid black;
+  border: 3px solid var(--blue);
   border-radius: 10px;
   padding: 0.5rem 1rem;
 `;
 
 const StyledSubHeading = styled.h3`
   margin-bottom: 0.5rem;
+  font-size: 14px;
   font-weight: bold;
+  color: var(--orange);
 `;
 
 const StyledLink = styled(Link)`

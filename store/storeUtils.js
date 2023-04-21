@@ -111,7 +111,8 @@ export function transformExcludedToCheckboxValue(excluded) {
 }
 
 export function transformAttendingToArray(attendingDogsString) {
-  let attendingDogsArray = attendingDogsString.split(",");
+  let trimmedDogs = attendingDogsString.replace(/\s+/g, "");
+  let attendingDogsArray = trimmedDogs.split(",");
   let transformedDogs = attendingDogsArray.map((dog) => ({
     name: dog,
     id: uid(),

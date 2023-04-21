@@ -32,12 +32,23 @@ export default function LocationSelect({ defaultData }) {
     const lat = event.target.getAttribute("data-lat");
     const long = event.target.getAttribute("data-long");
     const address = event.target.getAttribute("data-address");
+    let location = event.target.getAttribute("data-location");
+    const shortLocationName = trimLocationName(location);
     const newPosition = { long: long, lat: lat };
     setSelectedParkPosition(newPosition);
     setSelectedParkAddress(address);
-    setLocationName(locationSearch);
+    setLocationName(shortLocationName);
     setShowSearch(false);
-    /*     setSuggestions([]); */
+  }
+
+  function trimLocationName(location) {
+    const firstCommaIndex = location.indexOf(",");
+    if (firstCommaIndex === -1) {
+      return location;
+    }
+
+    const trimmedLocation = location.substring(0, firstCommaIndex);
+    return trimmedLocation;
   }
 
   return (
@@ -81,7 +92,7 @@ export default function LocationSelect({ defaultData }) {
               type="text"
               id="locationsearch"
               name="locationsearch"
-              defaultValue={defaultData?.location}
+              defaultValue={locationSearch}
               placeholder="Fischers Park..."
             />
             <ul
@@ -91,14 +102,15 @@ export default function LocationSelect({ defaultData }) {
             >
               {suggestions.map((suggestion) => (
                 <StyledSuggestion
-                  data-long={suggestion.lon}
+                  data-long={suggestion.long}
                   data-lat={suggestion.lat}
-                  data-address={suggestion.display_name}
+                  data-address={suggestion.address}
+                  data-location={suggestion.location}
                   type="button"
                   onClick={handleSuggestionSelect}
-                  key={suggestion.place_id}
+                  key={suggestion.id}
                 >
-                  {suggestion.display_name}
+                  {suggestion.address}
                 </StyledSuggestion>
               ))}
             </ul>
@@ -115,6 +127,7 @@ export default function LocationSelect({ defaultData }) {
             name="address"
             id="address"
             value={selectedParkAddress}
+            readOnly
             hidden
           />
         </>
@@ -125,6 +138,7 @@ export default function LocationSelect({ defaultData }) {
         id="lat"
         type="text"
         value={selectedParkPosition.lat}
+        readOnly
         hidden
       />
       <input
@@ -132,6 +146,7 @@ export default function LocationSelect({ defaultData }) {
         id="long"
         type="text"
         value={selectedParkPosition.long}
+        readOnly
         hidden
       />
     </>

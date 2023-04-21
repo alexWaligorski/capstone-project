@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 
-export default function Map({ lat, long, address }) {
+export default function Map({ lat, long, location }) {
   return (
     <StyledMap center={[lat, long]} zoom={12} scrollWheelZoom={false}>
       <TileLayer
@@ -13,7 +13,7 @@ export default function Map({ lat, long, address }) {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker position={[lat, long]}>
-        <Popup>{address}</Popup>
+        <Popup>{location}</Popup>
       </Marker>
     </StyledMap>
   );
