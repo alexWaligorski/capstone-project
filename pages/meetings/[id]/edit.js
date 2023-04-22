@@ -28,7 +28,6 @@ export default function EditMeetingPage({ onSubmit }) {
 
     router.push(`/meetings/${editedMeetingData.id}`);
   }
-
   return (
     <>
       <Header />

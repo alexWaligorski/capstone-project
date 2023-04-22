@@ -11,12 +11,14 @@ export default createGlobalStyle`
   --green: #007E2B;
   --yellow-hover: #fdf3d0;
   --orange: #EB6734;
+  --light-orange: #f9d2c2;
   --blue: #034A8A;
+  --skyblue: #ebf4fc;
   --brown: #914C27;
   --white: #ffffff;
   --black: #000000;
   --red: #DB1E13;
-  --stone: #333333;
+  --stone: #848687;
   *,
   *::before,
   *::after {
@@ -41,9 +43,20 @@ margin: 0;
 padding: 0;
 }
 
-h1, h2, h3, {
+h1, h2, h3, section {
  font-family: ${roboto.style.fontFamily}, sans-serif;
+
  }
 
+ textarea, input {
+ border-radius: 3px;
+ border: none;
+ font-family: ${roboto.style.fontFamily}, sans-serif;
+ padding: 0.2rem;
+ }
+
+label, legend {
+  font-size: 12px;
+}
 
 `;

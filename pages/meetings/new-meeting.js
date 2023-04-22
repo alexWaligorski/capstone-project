@@ -23,8 +23,7 @@ export default function NewMeetingPage({ onSubmit }) {
       <NewMeetingForm
         onSubmit={handleSubmit}
         formTitle="Plan ein DogDate!"
-        description="Lass deinen Hund mit anderen Fellnasen toben und lerne dabei selbst neue
-        Menschen kennen. Leg ein neues DogDate an, damit andere daran teilnehmen
+        description="Leg ein neues DogDate an, damit andere daran teilnehmen
         können."
       />
       <NavBar />

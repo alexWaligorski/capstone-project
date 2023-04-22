@@ -2,11 +2,13 @@ import NewMeetingForm from "./NewMeetingForm";
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import selectEvent from "react-select-event";
 import { useRouter } from "next/router";
 
 const defaultData = {
   id: "0",
+  location: "Volkspark Altona",
+  lat: "53.5831092",
+  long: "9.8959561",
   date: "2023-04-14",
   time: "15:00",
   furtherInfo: "Nur bei gutem Wetter!",
@@ -58,9 +60,8 @@ test("submits edited form data when fields are altered", async () => {
   const khuendinnen = screen.getByLabelText("kastrierte Hündinnen");
   const lhuendinnen = screen.getByLabelText("läufige Hündinnen");
   const welpen = screen.getByLabelText("Welpen");
-  const submitButton = screen.getByRole("button");
+  const submitButton = screen.getByText(/speichern/i);
 
-  await selectEvent.select(location, "Volkspark Altona");
   await user.clear(attending);
   await user.type(attending, "Fiete, Lore");
   await user.click(date, { target: { value: "2020-05-24" } });
@@ -79,6 +80,8 @@ test("submits edited form data when fields are altered", async () => {
     location: "Volkspark Altona",
     date: "2023-04-14",
     time: "15:00",
+    lat: "53.5831092",
+    long: "9.8959561",
     furtherInfo: "Nur bei gutem Wetter!",
     attending: "Fiete, Lore",
     unkastrierterueden: "on",

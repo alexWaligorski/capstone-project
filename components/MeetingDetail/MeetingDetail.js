@@ -4,28 +4,30 @@ import DogList from "../DogList/DogList";
 import Link from "next/link";
 import Image from "next/image";
 import ButtonWithIcon from "../ButtonWithIcon/ButtonWithIcon";
-import { useMeetingStore, useParkLocationsStore } from "../../store/store";
+import { useMeetingStore } from "../../store/store";
 import { useRouter } from "next/router";
 import Map from "../Map";
 
 export default function MeetingDetail({ data }) {
   const deleteMeeting = useMeetingStore((state) => state.deleteMeeting);
-  const parks = useParkLocationsStore((state) => state.parkLocations);
   const router = useRouter();
 
   if (!router.isReady || !data) {
     return <h1>loading</h1>;
   }
 
-  const { location, date, time, excluded, furtherInfo, attending, id } = data;
-  let position = [];
-  let address = "";
-
-  if (parks.length) {
-    const currentPark = parks.find((park) => park.name === location);
-    position = currentPark.position;
-    address = currentPark.address;
-  }
+  const {
+    location,
+    date,
+    time,
+    excluded,
+    furtherInfo,
+    attending,
+    id,
+    lat,
+    long,
+    address,
+  } = data;
 
   function handleDelete() {
     deleteMeeting(id);
@@ -36,8 +38,9 @@ export default function MeetingDetail({ data }) {
     <StyledArticle>
       <StyledHeading>{location}</StyledHeading>
       <Map
-        position={position.length && position}
-        address={address ? address : "Keine Addresse hinterlegt"}
+        lat={lat && lat}
+        long={long && long}
+        location={location && location}
       />
       <ImageWithText
         image="/calendar-icon.svg"
@@ -53,6 +56,10 @@ export default function MeetingDetail({ data }) {
           text={excluded}
         />
       )}
+      <StyledInfobox>
+        <StyledSubHeading>Adresse:</StyledSubHeading>
+        <StyledParagraph>{address}</StyledParagraph>
+      </StyledInfobox>
       {furtherInfo && (
         <StyledInfobox data-testid="info">
           <StyledSubHeading>Weitere Infos:</StyledSubHeading>
@@ -123,14 +130,18 @@ const StyledParagraph = styled.p`
 `;
 
 const StyledHeading = styled.h2`
-  border: 2px solid black;
+  border: 3px solid var(--blue);
+  font-size: 18px;
   border-radius: 10px;
   padding: 0.5rem 1rem;
+  margin-bottom: 2rem;
 `;
 
 const StyledSubHeading = styled.h3`
   margin-bottom: 0.5rem;
+  font-size: 14px;
   font-weight: bold;
+  color: var(--orange);
 `;
 
 const StyledLink = styled(Link)`

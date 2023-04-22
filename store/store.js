@@ -8,9 +8,12 @@ export const useMeetingStore = create(
       meetings: [
         {
           id: "5",
-          location: "Volkspark Altona",
+          location: "Jenischpark",
           date: "14.04.2023",
           time: "15:00",
+          address: "Jenischpark, Elbchaussee, 22605 Hamburg, Deutschland",
+          lat: "53.54801",
+          long: "9.86665",
           excluded: "unkastrierte Rüden, Welpen, läufige Hündinnen",
           furtherInfo: "Nur bei gutem Wetter!",
           attending: [
@@ -81,68 +84,3 @@ export const useDogProfileStore = create(
     }
   )
 );
-
-export const useParkLocationsStore = create((set) => ({
-  parkLocations: [
-    {
-      id: 101,
-      name: "Volkspark Altona",
-      position: [53.5831092, 9.8959561],
-      address: "August-Kirch-Straße 19, 22525 Hamburg",
-    },
-    {
-      id: 102,
-      name: "Fischerspark",
-      position: [53.5472686, 9.9180091],
-      address: "Fischers Allee 24, 22763 Hamburg",
-    },
-    {
-      id: 103,
-      name: "Jenischpark",
-      position: [53.5518873, 9.8656488],
-      address: "Baron-Voght-Straße 50, 22609 Hamburg",
-    },
-    {
-      id: 104,
-      name: "Niendorfer Gehege",
-      position: [53.6143294, 9.9281612],
-      address: "Niendorfer Gehege, 22453 Hamburg",
-    },
-    {
-      id: 105,
-      name: "Planten und Blomen",
-      position: [53.5606699, 9.9821389],
-      address: "Marseiller Promenade, 20355 Hamburg",
-    },
-    {
-      id: 106,
-      name: "Falkensteiner Ufer",
-      position: [53.5623821, 9.7648204],
-      address: "Falkensteiner Ufer, 22587 Hamburg",
-    },
-    {
-      id: 107,
-      name: "Klövensteen",
-      position: [53.5623746, 9.7339207],
-      address: "Sandmoorweg 160, 22559 Hamburg",
-    },
-    {
-      id: 108,
-      name: "Elbstrand Övelgönne",
-      position: [53.5447151, 9.9038221],
-      address: "Övelgönne 60, 22605 Hamburg",
-    },
-    {
-      id: 109,
-      name: "Wohlerspark",
-      position: [53.5579225, 9.9481185],
-      address: "Norderreihe 2, 22767 Hamburg",
-    },
-    {
-      id: 120,
-      name: "Schanzenpark",
-      position: [53.5653866, 9.9672976],
-      address: "Schröderstiftstraße, 20357 Hamburg",
-    },
-  ],
-}));

@@ -9,6 +9,8 @@ export function transformMeetingDataToDefaultData(meetingData) {
 
   return {
     ...meetingData,
+    lat: meetingData.lat.toString(),
+    long: meetingData.long.toString(),
     date: date,
     attending: attending,
     ...transformedExcluded,
@@ -23,6 +25,8 @@ export function transformFormDataToMeetingData(formData) {
 
   return {
     ...formData,
+    lat: parseFloat(formData.lat),
+    long: parseFloat(formData.long),
     id: formData.id ? formData.id : uid(),
     date: transformedDate,
     attending: attendingDogs,
@@ -107,7 +111,8 @@ export function transformExcludedToCheckboxValue(excluded) {
 }
 
 export function transformAttendingToArray(attendingDogsString) {
-  let attendingDogsArray = attendingDogsString.split(",");
+  let trimmedDogs = attendingDogsString.replace(/\s+/g, "");
+  let attendingDogsArray = trimmedDogs.split(",");
   let transformedDogs = attendingDogsArray.map((dog) => ({
     name: dog,
     id: uid(),
