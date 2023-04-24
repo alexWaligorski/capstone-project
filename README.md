@@ -17,7 +17,7 @@ Now you should be able to run it on your own device.
 
 ## About DogDates
 
-DogDates helps you planning playdates for your dog and its friends. In order to schedule a date and share it with other dog owners, you can add a new meeting. Select a location and fill in the form with more information about date, time and your dogs preferences. Let people know whether your dog is compatible with their pup. You can also add a profile for your dog and edit it whenver needed.
+DogDates helps you plan playdates for your dog and its friends. In order to schedule a date and share it with other dog owners, you can add a new meeting. Select a location and fill in the form with more information about date, time and your dogs preferences. Let people know whether your dog is compatible with their pup. You can also add a profile for your dog and edit it whenver needed.
 
 ## Development
 
