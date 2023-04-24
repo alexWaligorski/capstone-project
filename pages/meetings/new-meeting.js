@@ -14,7 +14,7 @@ export default function NewMeetingPage({ onSubmit }) {
 
     if (onSubmit) onSubmit(meetingData);
     createMeeting(meetingData);
-    router.push("/");
+    router.push(`/meetings/${meetingData.id}`);
   }
 
   return (
