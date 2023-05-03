@@ -11,7 +11,8 @@ export default createGlobalStyle`
   --green: #007E2B;
   --yellow-hover: #fdf3d0;
   --orange: #EB6734;
-  --light-orange: #f9d2c2;
+  --navOrange: rgba(235, 103, 52, 0.5);
+  --light-orange: #f5b299;
   --blue: #034A8A;
   --skyblue: #ebf4fc;
   --brown: #914C27;
