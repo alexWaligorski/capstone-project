@@ -49,7 +49,7 @@ const StyledListItem = styled.li`
   border-radius: 8px;
   background-color: var(--white);
   &:hover {
-    background-color: var(--yellow-hover);
+    background-color: var(--light-orange);
   }
 `;
 
